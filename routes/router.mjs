@@ -39,6 +39,25 @@ router.get('/home', async (req,res) => {
     }
 });
 
+router.get('/events', async (req,res) => {
+    try{
+        const events = await EventController.OurEvents();
+        console.log(events);
+        res.render('event',{
+            atHome: false,
+            atAbout: false,
+            atEvent: true,
+            atContact: false,
+            atAccount: false,
+            ourevents: events
+        });
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
 router.get('/about', async (req,res) => {
     try{
         //const parkingSiteNames = await homeController.showParkingSiteName(); αν χρειαστει κατι απο την database

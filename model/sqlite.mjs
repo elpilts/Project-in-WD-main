@@ -13,3 +13,15 @@ export let getParkingSiteName = () => {
         throw err;
     }
 }
+
+export let Events = () => {
+    const query = db.prepare('SELECT * from Event'); //οριζει query
+    let info;
+    try { //trexei query & το επιστρέφει
+        info = query.all();
+        return info;
+    }
+    catch (err) {
+        throw err;
+    }
+}
