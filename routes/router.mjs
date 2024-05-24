@@ -3,6 +3,8 @@ import session from 'express-session';
 
 const homeController = await import(`../controllers/Home.mjs`)
 const eventController = await import(`../controllers/Events.mjs`)
+const insertController = await import(`../controllers/Insert.mjs`)
+const deleteController = await import(`../controllers/Delete.mjs`)
 
 const router = express.Router()
 
@@ -52,6 +54,51 @@ router.get('/events', async (req,res) => {
             atAccount: false,
             ourevents: events
         });
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+router.post('/insert-event', async (req, res) => {
+    const { name, description, picture } = req.body;
+
+    try {
+        console.log("new:", name, description, picture);
+        newevent = await model.InsertEvent(name, description, picture); // Assuming createEvent is a function in your model to insert new events
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+router.get('/insert-event', async (req,res) => {
+    try{
+        const newevent = await insertController.InsertEvent();
+        console.log(newevent);
+        res.render('NewEvent',{
+            atHome: false,
+            atAbout: false,
+            atEvent: false,
+            atContact: false,
+            atAccount: false,
+            atInsert: true,
+            ourevents: newevent
+        });
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+
+router.post('/events', async (req,res) => {
+    const { thedelevent } = req.body;
+    try{
+        console.log("deleted elem:", thedelevent);
+        const noevent = await deleteController.DeleteEvent(thedelevent);
     }
     catch (error) {
         console.error(error);

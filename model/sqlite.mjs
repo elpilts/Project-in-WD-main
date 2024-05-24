@@ -25,3 +25,27 @@ export let Events = () => {
         throw err;
     }
 }
+
+export let Insert = (eventName,eventDescription,eventPicture) => {
+    const query = db.prepare('INSERT INTO Event (Name, Description, Picture) VALUES (?, ?, ?)'); //οριζει query
+    let info;
+    try { //trexei query & το επιστρέφει
+        info = query.run(eventName,eventDescription,eventPicture);
+        return true;
+    }
+    catch (err) {
+        throw err;
+    }
+}
+
+export let Delete = (deletename) => {
+    const query = db.prepare('DELETE FROM Event WHERE Name = ?'); //οριζει query
+    let info;
+    try { //trexei query & το επιστρέφει
+        info = query.all(deletename);
+        return info;
+    }
+    catch (err) {
+        throw err;
+    }
+}
