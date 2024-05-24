@@ -2,6 +2,7 @@ import express from 'express'
 import session from 'express-session';
 
 const homeController = await import(`../controllers/Home.mjs`)
+const eventController = await import(`../controllers/Events.mjs`)
 
 const router = express.Router()
 
@@ -41,9 +42,9 @@ router.get('/home', async (req,res) => {
 
 router.get('/events', async (req,res) => {
     try{
-        const events = await EventController.OurEvents();
+        const events = await eventController.OurEvents();
         console.log(events);
-        res.render('event',{
+        res.render('EventPage',{
             atHome: false,
             atAbout: false,
             atEvent: true,

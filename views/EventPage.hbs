@@ -1,0 +1,18 @@
+
+        <h1 class="title-event">
+            Οι εκδηλώσεις μας
+        </h1>
+        {{#if ourevents}}
+            {{#each ourevents}}
+                <div class="event">
+                    <h2>
+                        <em>{{Name}}</em><button class="Edit">Edit</button><button class="Delete">Delete</button>
+                    </h2>
+                    <div class="container-event">
+                        <p>{{Description}}</p>
+                        <img id="event-img" src={{Picture}} alt="Image about {{Name}}">
+                    </div>
+                </div>
+            {{/each}}
+        {{/if}}
+        <button class="Insert">Create a new event</button>

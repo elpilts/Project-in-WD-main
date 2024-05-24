@@ -12,7 +12,7 @@ footer {
   border-top: 1px solid rgba(54,15,42,0.5);
 }
 
-.title{
+.title-event{
   display: flex;
   justify-content: center;
   background-color: rgba(54,15,42);
@@ -22,7 +22,7 @@ footer {
   color: white;
 }
 
-.courses p, .Titan p, .EBEC p{
+.event p{
   background-color: #c0b1f4;
   padding: 20px;
   border-radius: 10px;
@@ -32,28 +32,28 @@ footer {
   width: 300px;
 }
 
-.con-courses, .con-ebec, .con-titan{
+.container-event{
   display: flex;
   width: 80%;
 }
 
-h2{
+.event h2{
   padding-left: 40px;
   padding-top: 40px;
   color: #360f2a;
   font-size: 25px;
 }
 
-.courses, .EBEC, .Titan{
+.event{
   padding-left: 200px;
   position: relative;
 }
 
-.Titan{
+.event:last-of-type{
   padding-bottom: 100px;
 }
 
-.courses::before, .EBEC::before, .Titan::before{
+.event::before{
   content: "";
   position: absolute;
   left: 100px;
@@ -64,11 +64,11 @@ h2{
   border-radius: 50%;
 }
 
-.courses::before{
+.event:first-of-type::before{
   top: 50%;
 }
 
-h2::before {
+.event h2::before {
   content: "";
   position: absolute;
   left: 109.5px; 
@@ -77,11 +77,11 @@ h2::before {
   border-left: 2px solid #360f2a;
 }
 
-.Titan h2::before{
+.event:last-of-type h2::before{
   bottom: 20%;
 }
 
-.con-courses img, .con-ebec img, .con-titan img{
+.container-event img{
   margin-left: 100px;
   margin-right: 0px;
   border-radius: 20px;
@@ -121,16 +121,16 @@ div:last-of-type{
 
 @media (max-width: 1024px) {
 
-  .courses p, .Titan p, .EBEC p{
+  .event p{
     min-width: 500px;
     max-width: 600px;
   }
   
-  .con-courses, .con-ebec, .con-titan{
+  .container-event{
     display: block;
   }
 
-  img {
+  .event img {
     margin-left: 0;
     padding-left: 0;
     min-width: 80%;
@@ -138,24 +138,24 @@ div:last-of-type{
 }
 
 @media (max-width: 720px){
-  .courses p, .Titan p, .EBEC p{
+  .event p{
     min-width: 100px;
   }
   
-  .con-courses, .con-ebec, .con-titan{
+  .container-event{
     display: block;
   }
 
-  img {
+  .event img {
     margin-left: auto;
     min-width: 90%;
   }
 
-  .courses::before, .EBEC::before, .Titan::before{
+  .event::before{
     left: 50px;
   }
 
-  h2::before {
+  .event h2::before {
     left: 59.5px; 
   }
 }
