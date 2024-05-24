@@ -258,3 +258,37 @@ function insertf(){
 //         });
 //     });
 // };
+
+//Edit
+document.addEventListener('DOMContentLoaded', function() {
+  const insert = document.querySelector('.btn');
+  insert.addEventListener('click', function() {
+      const name = document.getElementById('name').value;
+      const description = document.getElementById('description').value;
+      const picture = document.getElementById('picture').value;
+
+      sessionStorage.setItem('eventName', name);
+      sessionStorage.setItem('eventDescription', description);
+      sessionStorage.setItem('eventPicture', picture);
+
+      setTimeout(() => {
+          window.location.href = 'ekdhloseis.html';
+      }, 100);
+  });
+});
+
+//Insert
+document.addEventListener('DOMContentLoaded', function() {
+  const insert = document.querySelector('.btn');
+  insert.addEventListener('click', function() {
+      const name = document.getElementById('name').value;
+      const description = document.getElementById('description').value;
+      const picture = document.getElementById('picture').value;
+
+      sessionStorage.setItem('eventName', name);
+      sessionStorage.setItem('eventDescription', description);
+      sessionStorage.setItem('eventPicture', picture);
+
+      window.location.href = 'ekdhloseis.html';
+  });
+});
