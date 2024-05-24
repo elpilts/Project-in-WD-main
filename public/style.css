@@ -1,0 +1,462 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background-color: #ffff;
+  color: #360f2a;
+  padding: 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  border-bottom: 1px solid rgba(54,15,42,0.5);
+  z-index: 2;
+}
+
+header h1 {
+  margin: 0;
+  margin-left: 30px;
+  font-size: 30px;
+  font-weight: bold;
+ 
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+}
+
+header nav ul li {
+  margin-left: 20px;
+  padding-top: 20px;
+}
+
+header nav ul li:first-of-type {
+  margin-left: 280px; 
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: #360f2a;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.btn-header {
+  position: relative;
+  background-color: rgba(54,15,42);
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 20px;
+  cursor: pointer;
+  right: 0;
+  border:  1px solid rgba(54,15,42);
+  border-radius: 12px;
+  margin-left: 30px;
+}
+
+.btn-header:hover {
+  background-color: white;
+  color: rgba(54,15,42);
+  border:  1px solid rgba(54,15,42);
+
+}
+
+footer {
+    background-color: #360f2a;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid rgba(54,15,42,0.5);
+}
+
+.vertical-line-left, .vertical-line-right {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 20px;
+    background-color: rgba(54,15,42);
+    z-index: 1;
+}
+
+.vertical-line-left {
+    left: 0; 
+}
+
+.vertical-line-right {
+    right: 0;
+}
+
+main {
+    display: flex;
+    flex-direction: column; 
+}
+
+.after-header {
+    position: relative;
+    background-image: url('files\header.png'); 
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 600px; 
+}
+
+.btn {
+    position: absolute;
+    top: 61%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    background-color: white;
+    color: rgba(54,15,42);
+    font-size: 25px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: rgba(54,15,42);
+    color: White;
+    border:  1px solid white;
+
+}
+
+#slogan {
+    color: #fff;
+    font-size: 25px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+    font-style: italic;
+    text-align: center; 
+    margin-top: 10px; 
+    position: absolute;
+    top: 69%; 
+    left: 39.5%; 
+}
+
+.about {
+    display: flex;
+    align-items: center;
+    padding: 100px;
+}
+
+
+.about img {
+    order: 2;
+    flex: 0 0 30%;
+    height: auto;
+    margin-left: 20px;
+    align-items: center;
+}
+
+.content {
+    padding-right: 50px;
+    order: 1;
+    font-size: 18px;
+    color: #333;
+    text-align: justify;
+}
+
+.content li{
+  list-style: none;
+}
+
+.title{
+    padding-left: 50px;
+    padding-bottom: 10px;
+}
+
+.title-container {
+    display: flex;
+    align-items: center;
+    position: relative; 
+}
+
+.title-line::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px; 
+    border-top: 1px solid black;
+    padding-bottom: 15px;
+}
+
+.title-line {
+    margin-left: 10px; 
+    padding-left: 10px; 
+    font-weight: bold; 
+}
+
+.numbers-section {
+  position: relative;
+  top: 50px;
+  bottom: 50px;
+  width: 20px;
+  background-color: rgba(54,15,42);
+}
+
+/*θεσεις και πλάτη κουτιών*/
+.numbers{
+  background-color: #f8c3fa;
+}
+
+.numbers h1{
+  text-align: center;
+  margin-top: 30px;
+}
+
+.wrapper {
+  position: relative;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 120px;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  background-color: #f8c3fa;
+}
+
+  /*Τα κουτια που περιεχουν τους αριθμούς*/
+  .container {
+    width: 35vmin;
+    height: 28vmin;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 20px 0;
+    position: relative;
+    font-size: 16px;
+    border-radius: 0.5em;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-bottom: 15px solid  rgba(54,15,42);
+  }
+  
+
+  /*Αριθμοί*/
+  span.num {
+    color:  rgba(54,15,42);
+    display: grid;
+    place-items: center;
+    font-weight: 600;
+    font-size: 3em;
+  }
+
+  /*Κειμενο κατω από τους αριθμούς*/
+  span.text {
+    color:  rgba(54,15,42);
+    font-size: 1em;
+    text-align: center;
+    pad: 0.7em 0;
+    font-weight:bold;
+    line-height: 0;
+  }
+
+
+.Our-partners{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 5px solid rgba(54, 15, 42,0.5);
+  padding: 50px;
+}
+
+
+.Our-partners h1 {
+  text-align: center;
+}
+
+
+.partners-text{
+  text-align: center;
+  font-size: 17px;
+  font-style: italic;
+}
+
+.Our-events{
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.events{
+  display: flex;
+  flex-direction: row;
+  
+}
+
+.box {
+  padding-top: 30px;
+  padding-bottom: 80px;
+  margin-right: 200px;
+}
+
+.box:last-child {
+  margin-right: 70px;
+}
+
+.event-image{
+  width: 150%;
+  height: auto;
+}
+
+.box li {
+  padding-top: 15px;
+  list-style: none;
+  text-align: justify;
+  font-size: 20px;
+}
+
+.box li a {
+  text-decoration: none;
+  color: #360f2a;
+  font-weight: 450;
+}
+
+.box li a:hover{
+  color: blue;
+}
+
+
+.signup {
+  margin-top: 150px; 
+  margin-left: 130px;
+}
+
+.signup h1{
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.signup h2{
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+.signup h3{
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+input{
+  padding: 4px;
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  box-sizing: border-box; 
+}
+
+.sign{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.accept{
+  padding-left: 80px;
+}
+
+.accept h2{
+  font-size: 18px;
+}
+
+.error-message {
+  padding-top: 20px;
+  color: red;
+  display: none;
+}
+
+.full-name, .contact, .crt-password{
+  display: flex;
+  flex-direction: row;
+}
+
+.name, .email, .password{
+  display: flex;
+  flex-direction: column;
+  margin-right: 150px;
+}
+
+.uni input{
+  width: 46%;
+}
+
+.password-input {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+}
+
+.toggle-password:hover {
+  text-decoration: underline;
+}
+
+.btn{
+  background-color: rgba(54,15,42);
+  color: white ;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 7px 15px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.btn[disabled] {
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+}
+
+.btn-enabled {
+  background-color: rgba(54,15,42);
+  color: white;
+  cursor: pointer;
+}
+
+.btn-enabled:hover {
+  background-color: rgb(56, 32, 49);
+  color: white;
+}
+
+
+footer {
+  margin-top: 100px;
+  position: relative;
+  width: 100%;
+  background-color: #360f2a;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid rgba(54,15,42,0.5);
+  
+}
+

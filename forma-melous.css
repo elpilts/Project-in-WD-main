@@ -1,0 +1,147 @@
+body {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    background-color: #c0b1f4;
+    font-family: Arial, sans-serif;
+}
+
+form {
+    width: 600px;
+    padding: 20px;
+    border-radius: 5px;
+    color: #360f2a;
+}
+
+fieldset {
+    margin-bottom: 20px;
+    border: 1px solid #808080;
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+h1{
+    color: #fff;
+    text-align: center;
+    background-color: #68324a;
+    margin: 40px;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+label {
+    display: block;
+    margin: 20px 0px 0px 15px;
+    font-size: 16px;
+}
+
+#onoma{
+    margin-right: 35px;
+}
+
+#thl{
+    margin-right: 35px;
+}
+
+.etos-spoudwn label{
+    display: inline;
+}
+
+.etos-spoudwn label:first-child{
+    display: block;
+}
+
+.omada label{
+    display: inline;
+}
+
+.omada label:first-child{
+    display: block;
+}
+
+.kalitera label{
+    display: inline;
+}
+
+.kalitera label:first-child{
+    display: block;
+}
+
+.kalitera {
+    padding-bottom: 20px;
+}
+
+:placeholder-shown{
+    font-size: 15px;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="radio"],
+input[type="checkbox"],
+select{
+    padding: 8px;
+    margin-left: 15px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+input[type="radio"],
+input[type="checkbox"],
+select{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#kalitera1, #A1{
+    margin-top: 20px;
+}
+
+#kalitera5{
+    margin-bottom: 10px;
+}
+
+#kal5{
+    margin-bottom: 20px; /*prosoxh*/
+}
+
+select{
+    color: #fff;
+    background-color: #68324a;
+    width: 95%;
+    margin-bottom: 15px;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"]{
+    border: none;
+    margin: 30px 0px 15px 15px;
+    outline: none;
+    border-radius: 0px;
+    border-bottom: 1px dotted #808080;
+    padding-bottom: 5px;
+}
+
+::placeholder{
+    color: #808080;
+}
+
+input[type="submit"] {
+    padding: 15px 30px;
+    background-color: #360f2a;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}
+
+input[type="submit"]:hover{
+    background-color: #68324a;
+    border: #61447e;
+    border-width: 3px;
+    border-style:inset;
+}
