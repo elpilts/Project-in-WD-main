@@ -460,3 +460,151 @@ footer {
   
 }
 
+/* Events */
+.title-event{
+  display: flex;
+  justify-content: center;
+  background-color: rgba(54,15,42);
+  padding: 40px;
+  margin-top: 90px;
+  text-align: center;
+  color: white;
+}
+
+.event p{
+  background-color: #c0b1f4;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 17px;
+  flex: 1;
+  height: fit-content;
+  width: 300px;
+}
+
+.container-event{
+  display: flex;
+  width: 80%;
+}
+
+.event h2{
+  padding-left: 40px;
+  padding-top: 40px;
+  color: #360f2a;
+  font-size: 25px;
+}
+
+.event{
+  padding-left: 200px;
+  position: relative;
+}
+
+.event:last-of-type{
+  padding-bottom: 100px;
+}
+
+.event::before{
+  content: "";
+  position: absolute;
+  left: 100px;
+  top: 40%;
+  width: 20px;
+  height: 20px;
+  background-color: #360f2a;
+  border-radius: 50%;
+}
+
+.event:first-of-type::before{
+  top: 50%;
+}
+
+.event h2::before {
+  content: "";
+  position: absolute;
+  left: 109.5px; 
+  width: 1px;
+  height: 100%;
+  border-left: 2px solid #360f2a;
+}
+
+.event:last-of-type h2::before{
+  bottom: 20%;
+}
+
+.container-event img{
+  margin-left: 100px;
+  margin-right: 0px;
+  border-radius: 20px;
+  height: 100%;
+  object-fit: cover; 
+  max-width: 40%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  filter: grayscale(30%);
+  margin-bottom: 50px;
+}
+
+.Edit, .Delete, .Insert{
+  margin: 10px 10px;
+  background-color: rgba(54,15,42);
+  color: white ;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 7px 15px;
+  border-radius: 12px;
+}
+
+.Edit:hover, .Delete:hover, .Insert:hover {
+  background-color: White;
+  color: rgb(56, 32, 49);
+  border:  2px solid rgb(56, 32, 49);
+  cursor: pointer;
+}
+
+div:last-of-type{
+  margin-bottom: 0px;
+}
+
+.Insert{
+  display: block;
+  margin: 0px auto 100px auto;
+}
+
+@media (max-width: 1024px) {
+
+  .event p{
+    min-width: 500px;
+    max-width: 600px;
+  }
+  
+  .container-event{
+    display: block;
+  }
+
+  .event img {
+    margin-left: 0;
+    padding-left: 0;
+    min-width: 80%;
+  }
+}
+
+@media (max-width: 720px){
+  .event p{
+    min-width: 100px;
+  }
+  
+  .container-event{
+    display: block;
+  }
+
+  .event img {
+    margin-left: auto;
+    min-width: 90%;
+  }
+
+  .event::before{
+    left: 50px;
+  }
+
+  .event h2::before {
+    left: 59.5px; 
+  }
+}
