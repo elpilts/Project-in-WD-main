@@ -6,6 +6,8 @@ const eventController = await import(`../controllers/Events.mjs`)
 const insertController = await import(`../controllers/Insert.mjs`)
 const deleteController = await import(`../controllers/Delete.mjs`)
 const editController = await import(`../controllers/Edit.mjs`)
+const signupController = await import('../controllers/Signup.mjs')
+
 
 const router = express.Router()
 
@@ -36,6 +38,7 @@ router.get('/home', async (req,res) => {
             atAccount: false,
             atInsert: false,
             atEdit: false,
+            atSign: false,
             parkingName: parkingSiteNames
         });
     }
@@ -184,4 +187,58 @@ router.get('/about', async (req,res) => {
     }
 });
 
+router.get('/events', async (req,res) => {
+    try{
+        //const parkingSiteNames = await homeController.showParkingSiteName(); αν χρειαστει κατι απο την database
+        res.render('ekdhloseis',{
+            atHome: false,
+            atAbout: false,
+            atEvent: false,
+            atContact: true,
+            atSign: false,
+        });
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+router.get('/signup', async (req,res) => {
+    try{
+        //const newDatas = await signupController.insertUserData();
+        //console.log(newDatas);
+        res.render('SignUp',{
+            atHome: false,
+            atAbout: false,
+            atEvent: false,
+            atContact: false,
+            atSign: true,
+        });
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
 export default router ;
+
+router.get('/account', async (req,res) => {
+    try{
+        const parkingSiteNames = await homeController.showParkingSiteName();
+        console.log(parkingSiteNames);
+        res.render('account',{
+            atHome: true,
+            atAbout: false,
+            atEvent: false,
+            atContact: false,
+            atSign: false,
+            parkingName: parkingSiteNames
+        });
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
