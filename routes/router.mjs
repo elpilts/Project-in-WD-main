@@ -74,8 +74,8 @@ router.get('/events', async (req,res) => {
 
 router.get('/signup', async (req,res) => {
     try{
-        const newDatas = await signupController.insertUserData();
-        console.log(newDatas);
+        //const newDatas = await signupController.insertUserData();
+        //console.log(newDatas);
         res.render('SignUp',{
             atHome: false,
             atAbout: false,
