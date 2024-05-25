@@ -69,18 +69,18 @@ router.get('/events', async (req,res) => {
     }
 });
 
-router.post('/insert-event', async (req, res) => {
-    // console.log('Request body:', req.body);
-    // const { name, description, picture } = req.body;
-    try {
-        await insertController.InsertEvent(req,res);
-    } catch (error) {
-        console.error(error);
-        res.status(500).send('Internal Server Error');
-    }
-});
+// router.post('/insert-event', async (req, res) => {
+//     // console.log('Request body:', req.body);
+//     // const { name, description, picture } = req.body;
+//     try {
+//         await insertController.InsertEvent(req,res);
+//     } catch (error) {
+//         console.error(error);
+//         res.status(500).send('Internal Server Error');
+//     }
+// });
 
-router.get('/insert-event', async (req,res) => {
+router.get('/event/insert', async (req,res) => {
     try{
         res.render('NewEvent',{
             atHome: false,
@@ -179,23 +179,6 @@ router.get('/about', async (req,res) => {
         res.render('AboutUsPage',{
             atHome:false,
             atAbout:true
-        });
-    }
-    catch (error) {
-        console.error(error);
-        res.status(500).send('Internal Server Error');
-    }
-});
-
-router.get('/events', async (req,res) => {
-    try{
-        //const parkingSiteNames = await homeController.showParkingSiteName(); αν χρειαστει κατι απο την database
-        res.render('ekdhloseis',{
-            atHome: false,
-            atAbout: false,
-            atEvent: false,
-            atContact: true,
-            atSign: false,
         });
     }
     catch (error) {

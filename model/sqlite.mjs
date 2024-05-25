@@ -38,42 +38,41 @@ export let Events = () => {
     }
 }
 
-export let Insert = (eventName,eventDescription,eventPicture) => {
-    const query = db.prepare('INSERT INTO Event (Name, Description, Picture) VALUES (?, ?, ?)'); //οριζει query
-    let info;
-    try { //trexei query & το επιστρέφει
-        info = query.run(eventName,eventDescription,eventPicture);
-        return true;
-    }
-    catch (err) {
-        throw err;
-    }
-}
+// export let Insert = (eventName,eventDescription,eventPicture) => {
+//     const query = db.prepare('INSERT INTO Event (Name, Description, Picture) VALUES (?, ?, ?)'); //οριζει query
+//     let info;
+//     try { //trexei query & το επιστρέφει
+//         info = query.run(eventName,eventDescription,eventPicture);
+//         return true;
+//     }
+//     catch (err) {
+//         throw err;
+//     }
+// }
 
-export let Delete = (deletename) => {
-    const query = db.prepare('DELETE FROM Event WHERE Name = ?'); //οριζει query
-    let info;
-    try { //trexei query & το επιστρέφει
-        info = query.run(deletename);
-        return info;
-    }
-    catch (err) {
-        throw err;
-    }
-}
+// export let Delete = (deletename) => {
+//     const query = db.prepare('DELETE FROM Event WHERE Name = ?'); //οριζει query
+//     let info;
+//     try { //trexei query & το επιστρέφει
+//         info = query.run(deletename);
+//         return info;
+//     }
+//     catch (err) {
+//         throw err;
+//     }
+// }
 
-export let Edit = (eventName, eventDescription, eventPicture) => {
-    const query = db.prepare('UPDATE Event SET Description = ?, Picture = ? WHERE Name = ?'); //οριζει query
-    let info;
-    try { //trexei query & το επιστρέφει
-        info = query.run(eventDescription, eventPicture, eventName);
-        return true;
-    }
-    catch (err) {
-        throw err;
-    }
-}
-;
+// export let Edit = (eventName, eventDescription, eventPicture) => {
+//     const query = db.prepare('UPDATE Event SET Description = ?, Picture = ? WHERE Name = ?'); //οριζει query
+//     let info;
+//     try { //trexei query & το επιστρέφει
+//         info = query.run(eventDescription, eventPicture, eventName);
+//         return true;
+//     }
+//     catch (err) {
+//         throw err;
+//     }
+// };
 
 // Function to insert form data into the database
 export const insertFormData = (formData) => {
@@ -96,6 +95,25 @@ export const insertFormData = (formData) => {
     }
 };
 
+export const eventData = (eventData) => {
+    // Open database connection
+    const db = openDatabaseConnection();
+
+    try {
+        // Prepare and execute the insert query
+        const query = db.prepare('INSERT INTO Event (Name, Description, Picture) VALUES (?, ?, ?)');
+        query.run(eventData.name, eventData.description, eventData.picture);
+
+        // Return a promise to handle asynchronous operations
+        return Promise.resolve();
+    } catch (error) {
+        console.error('Error inserting form data:', error);
+        return Promise.reject(error);
+    } finally {
+        // Close the database connection
+        db.close();
+    }
+};
 
 // Function to insert user data
 //export const insertUserData = (name, email, phone, fieldOfStudies, password) => {
