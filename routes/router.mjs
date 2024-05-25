@@ -53,4 +53,35 @@ router.get('/about', async (req,res) => {
     }
 });
 
+router.get('/about', async (req,res) => {
+    try{
+        //const parkingSiteNames = await homeController.showParkingSiteName(); αν χρειαστει κατι απο την database
+        res.render('AboutUsPage',{
+            atHome: false,
+            atAbout: false,
+            atEvent: false,
+            atContact: false,
+            atAccount: true,
+        });
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+router.get('/account', async (req,res) => {
+    try{
+        //const parkingSiteNames = await homeController.showParkingSiteName(); αν χρειαστει κατι απο την database
+        res.render('SignUp',{
+            atHome:false,
+            atAbout:false
+        });
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
 export default router ;
