@@ -27,14 +27,19 @@ export const getParkingSiteName = () => {
 }
 
 export let Events = () => {
+    const db = openDatabaseConnection();
     const query = db.prepare('SELECT * from Event'); //οριζει query
     let info;
     try { //trexei query & το επιστρέφει
         info = query.all();
+        console.log(info);
         return info;
     }
     catch (err) {
         throw err;
+    } finally {
+        // Close the database connection
+        db.close();
     }
 }
 
