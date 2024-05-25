@@ -118,25 +118,57 @@ router.delete('/events/:eventName', async (req, res) => {
 //     }
 // });
 
-router.get('/events/edit', async (req, res) => {
-    res.render('EditPage',{
-        atHome: false,
-        atAbout: false,
-        atEvent: false,
-        atContact: false,
-        atAccount: false,
-        atInsert: false,
-        atEdit: true
-    });
-});
-
-router.post('/events/edit', async (req, res) => {
+router.put('/events/edit/:eventName', async (req, res) => {
+    const eventName = req.params.eventName;
+    const eventDescription = req.params.eventDescription;
+    const eventPicture = req.params.eventPicture;
     try {
-        await editController.EditEvent(req,res);
+        console.log("name:", eventName);
+        await editController.EditEvent(eventName, eventDescription, eventPicture);
     } catch (error) {
+        console.error('Error deleting event:', error);
         res.status(500).send('Internal Server Error');
     }
 });
+
+router.get('/events/edit', async (req,res) => {
+    try{
+        res.render('EditPage',{
+            atHome: false,
+            atAbout: false,
+            atEvent: false,
+            atContact: false,
+            atAccount: false,
+            atInsert: false,
+            atEdit: true
+        });
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+// router.get('/events/edit', async (req, res) => {
+//     res.render('EditPage',{
+//         atHome: false,
+//         atAbout: false,
+//         atEvent: false,
+//         atContact: false,
+//         atAccount: false,
+//         atInsert: false,
+//         atEdit: true
+//     });
+// });
+
+// router.post('/events/edit', async (req, res) => {
+//     try {
+//         await editController.EditEvent(req,res);
+//     } catch (error) {
+//         console.error(error);
+//         res.status(500).send('Internal Server Error');
+//     }
+// });
 
 router.get('/about', async (req,res) => {
     try{

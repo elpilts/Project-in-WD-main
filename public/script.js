@@ -114,14 +114,13 @@ document.addEventListener('DOMContentLoaded', function() {
 //εκδηλώσεις
 //import { compareSync } from "bcrypt";
 
-let a=0;
-document.addEventListener('DOMContentLoaded', function() {
-    deleteDiv();
-    permanentDelete();
-    // changef();
-    insertf();
-    // heightClass();
-});
+// let a=0;
+// document.addEventListener('DOMContentLoaded', function() {
+//     // deleteDiv();
+//     // changef();
+//     // insertf();
+//     // heightClass();
+// });
 
 // function heightClass(){
 //     const Divs = document.querySelectorAll('.events div');
@@ -186,64 +185,70 @@ async function deleteEvent(button) {
   }
 }
 
-//μονιμη διαγραφή
-// function permanentDelete(){
-//     const deletedElementId = localStorage.getItem('deletedElementId');
-//     if (deletedElementId) {
-//         // Remove the deleted element if it exists
-//         const deletedElement = document.getElementById(deletedElementId);
-//         if (deletedElement) {
-//             deletedElement.remove();
-//         }
-//         // Clear the stored deleted element information
-//         localStorage.removeItem('deletedElementId');
-//     }
-// };
+async function editEvent(button) {
+  const eventName = button.closest('.event').getAttribute('data-event-name');
+  const newDescription = document.getElementById('description').value;
+  const newPicture = document.getElementById('picture').value;
+  
+  try {
+      const response = await fetch(`/events/edit/`, {
+          method: 'POST'
+      });
+
+      if (response.ok) {
+          console.log('Event edited successfully');
+      } else {
+          console.error('Failed to edit event');
+      }
+  } catch (error) {
+      console.error('Error editing event:', error);
+  }
+}
 
 //Insert
-function insertf(){
-    let name = sessionStorage.getItem('eventName');
-    let description = sessionStorage.getItem('eventDescription');
-    let picture = sessionStorage.getItem('eventPicture');
+// function insertf(){
+//     let name = sessionStorage.getItem('eventName');
+//     let description = sessionStorage.getItem('eventDescription');
+//     let picture = sessionStorage.getItem('eventPicture');
 
-    if (name&&description&&picture&&a==0){
-        const newEvent = document.createElement('div');
-        const className = name.replace(/\s+/g, '-').toLowerCase();
+//     if (name&&description&&picture&&a==0){
+//         const newEvent = document.createElement('div');
+//         const className = name.replace(/\s+/g, '-').toLowerCase();
 
-        newEvent.innerHTML = `
-            <div class="${className}">
-                <h2><em>${name}</em><button class="Edit" id="e-course">Edit</button><button class="Delete" id="d-course">Delete</button></h2>
-                <div class="con-${className}">
-                    <p>${description}</p>
-                    <img src="${picture}" alt="Image about ${name}">
-                </div>
-            </div>
-            <style>.con-${className}{
-                display: flex;
-                width: 80%;
-              }
-            //   .${className}::before{
-            //     content: "";
-            //     position: absolute;
-            //     left: 100px;
-            //     top: 40%;
-            //     width: 20px;
-            //     height: 20px;
-            //     background-color: #360f2a;
-            //     border-radius: 50%;
-              }
-            </style>
-        `;
+//         newEvent.innerHTML = `
+//             <div class="${className}">
+//                 <h2><em>${name}</em><button class="Edit" id="e-course">Edit</button><button class="Delete" id="d-course">Delete</button></h2>
+//                 <div class="con-${className}">
+//                     <p>${description}</p>
+//                     <img src="${picture}" alt="Image about ${name}">
+//                 </div>
+//             </div>
+//             <style>.con-${className}{
+//                 display: flex;
+//                 width: 80%;
+//               }
+//             //   .${className}::before{
+//             //     content: "";
+//             //     position: absolute;
+//             //     left: 100px;
+//             //     top: 40%;
+//             //     width: 20px;
+//             //     height: 20px;
+//             //     background-color: #360f2a;
+//             //     border-radius: 50%;
+//               }
+//             </style>
+//         `;
 
-        const eventContainer = document.querySelector('.events');
-        eventContainer.appendChild(newEvent);
-        // deleteDiv();
-        name="";
-        description=""
-        picture="";
-    }
-    a=0;
-};
+//         const eventContainer = document.querySelector('.events');
+//         eventContainer.appendChild(newEvent);
+//         // deleteDiv();
+//         name="";
+//         description=""
+//         picture="";
+//     }
+//     a=0;
+// };
 
 //Edit
 // function changef(){

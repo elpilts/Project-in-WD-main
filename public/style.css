@@ -690,7 +690,7 @@ div:last-of-type{
   font-size: 25px;
 }
 
-.edit .btn{
+.edit-btn{
   margin-top: 10px;
   background-color: rgba(54,15,42);
   color: white ;
@@ -703,7 +703,7 @@ div:last-of-type{
   text-align: center;
 }
 
-.edit .btn:hover {
+.edit-btn:hover {
   background-color: rgb(56, 32, 49);
   color: White;
 }

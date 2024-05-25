@@ -1,11 +1,10 @@
 const model = await import(`../model/sqlite.mjs`)
 
-export async function EditEvent(req,res) {
-    console.log('Received data:', req.params.name, req.params.description, req.params.picture);
+export async function EditEvent(eventName, eventDescription, eventPicture) {
     try {
-        const events = await model.Edit(req.params.name,req.params.description,req.params.picture)
+        const events = await model.Edit(eventName, eventDescription, eventPicture)
 
-        return events
+        return true
     } catch(err) {
         console.log(err);
     }
