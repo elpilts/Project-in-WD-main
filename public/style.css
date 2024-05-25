@@ -657,3 +657,53 @@ div:last-of-type{
   background-color: rgb(56, 32, 49);
   color: White;
 }
+
+/* Edit */
+.edit{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+}
+
+.edit div{
+  padding-bottom: 15px;
+  text-align: center;
+  border: none;
+}
+
+.edit input{
+  font-size: 18px;
+  padding-left: 10px;
+  border-radius: 8px;
+}
+
+.edit h1{
+  font-size: 35px;
+  padding-bottom: 20px;
+}
+
+.edit label{
+  display: block;
+  font-size: 25px;
+}
+
+.edit .btn{
+  margin-top: 10px;
+  background-color: rgba(54,15,42);
+  color: white ;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 7px 15px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.edit .btn:hover {
+  background-color: rgb(56, 32, 49);
+  color: White;
+}

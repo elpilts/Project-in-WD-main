@@ -42,8 +42,20 @@ export let Delete = (deletename) => {
     const query = db.prepare('DELETE FROM Event WHERE Name = ?'); //οριζει query
     let info;
     try { //trexei query & το επιστρέφει
-        info = query.all(deletename);
+        info = query.run(deletename);
         return info;
+    }
+    catch (err) {
+        throw err;
+    }
+}
+
+export let Edit = (eventName, eventDescription, eventPicture) => {
+    const query = db.prepare('UPDATE Event SET Description = ?, Picture = ? WHERE Name = ?'); //οριζει query
+    let info;
+    try { //trexei query & το επιστρέφει
+        info = query.run(eventDescription, eventPicture, eventName);
+        return true;
     }
     catch (err) {
         throw err;

@@ -139,49 +139,66 @@ document.addEventListener('DOMContentLoaded', function() {
 // };
 
 //Delete
-function deleteDiv(){
-    const del = document.querySelectorAll('.Delete');
-    del.forEach(button => {
-        button.addEventListener('click', function() {
-            const parentDiv = button.closest('.event div');
-            if (parentDiv) {
-              const delEvent = parentDiv.querySelector('em').textContent;
-              localStorage.setItem('deletedElementId', parentDiv.id); //για να διαγραφει μονιμα
-              parentDiv.remove();
-              const formData = new FormData();
-              formData.append('name', eventName);
-              //post method
-              fetch('/events', {
-                method: 'POST',
-                body: formData
-              })
-              .then(response => {
-                  if (response.ok) {
-                      console.log('Event deleted successfully');
-                  } else {
-                      console.error('Failed to delete event');
-                  }
-              })
+// function deleteDiv(){
+//     const del = document.querySelectorAll('.Delete');
+//     del.forEach(button => {
+//         button.addEventListener('click', function() {
+//             const parentDiv = button.closest('.event div');
+//             if (parentDiv) {
+//               const delEvent = parentDiv.querySelector('em').textContent;
+//               localStorage.setItem('deletedElementId', parentDiv.id); //για να διαγραφει μονιμα
+//               parentDiv.remove();
+//               const formData = new FormData();
+//               formData.append('name', eventName);
+//               //post method
+//               fetch('/events', {
+//                 method: 'POST',
+//                 body: formData
+//               })
+//               .then(response => {
+//                   if (response.ok) {
+//                       console.log('Event deleted successfully');
+//                   } else {
+//                       console.error('Failed to delete event');
+//                   }
+//               })
 
 
-            }
-        });
-    });
-};
+//             }
+//         });
+//     });
+// };
+
+async function deleteEvent(button) {
+  const eventName = button.closest('.event').getAttribute('data-event-name');
+  try {
+      const response = await fetch(`/events/${eventName}`, {
+          method: 'DELETE'
+      });
+      if (response.ok) {
+          console.log('Event deleted successfully');
+          button.closest('.event').remove();
+      } else {
+          console.error('Failed to delete event');
+      }
+  } catch (error) {
+      console.error('Error deleting event:', error);
+  }
+}
 
 //μονιμη διαγραφή
-function permanentDelete(){
-    const deletedElementId = localStorage.getItem('deletedElementId');
-    if (deletedElementId) {
-        // Remove the deleted element if it exists
-        const deletedElement = document.getElementById(deletedElementId);
-        if (deletedElement) {
-            deletedElement.remove();
-        }
-        // Clear the stored deleted element information
-        localStorage.removeItem('deletedElementId');
-    }
-};
+// function permanentDelete(){
+//     const deletedElementId = localStorage.getItem('deletedElementId');
+//     if (deletedElementId) {
+//         // Remove the deleted element if it exists
+//         const deletedElement = document.getElementById(deletedElementId);
+//         if (deletedElement) {
+//             deletedElement.remove();
+//         }
+//         // Clear the stored deleted element information
+//         localStorage.removeItem('deletedElementId');
+//     }
+// };
 
 //Insert
 function insertf(){
@@ -220,7 +237,7 @@ function insertf(){
 
         const eventContainer = document.querySelector('.events');
         eventContainer.appendChild(newEvent);
-        deleteDiv();
+        // deleteDiv();
         name="";
         description=""
         picture="";
@@ -294,17 +311,17 @@ function insertf(){
 // });
 
 //Insert
-document.addEventListener('DOMContentLoaded', function() {
-  const insert = document.querySelector('create-btn');
-  insert.addEventListener('click', function() {
-      const name = document.getElementById('name').value;
-      const description = document.getElementById('description').value;
-      const picture = document.getElementById('picture').value;
+// document.addEventListener('DOMContentLoaded', function() {
+//   const insert = document.querySelector('create-btn');
+//   insert.addEventListener('click', function() {
+//       const name = document.getElementById('name').value;
+//       const description = document.getElementById('description').value;
+//       const picture = document.getElementById('picture').value;
 
-      sessionStorage.setItem('eventName', name);
-      sessionStorage.setItem('eventDescription', description);
-      sessionStorage.setItem('eventPicture', picture);
+//       sessionStorage.setItem('eventName', name);
+//       sessionStorage.setItem('eventDescription', description);
+//       sessionStorage.setItem('eventPicture', picture);
 
-      window.location.href = 'views/EventPage.hbs';
-  });
-});
+//       window.location.href = '/insert-event';
+//   });
+// });

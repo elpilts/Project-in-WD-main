@@ -14,6 +14,9 @@ app.set('views', './views');
 
 app.use('/',router);
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 const server = app.listen(PORT, () => {
     console.log(`http://127.0.0.1:${PORT}`);
 });
