@@ -704,6 +704,8 @@ div:last-of-type{
 .edit-btn:hover {
   background-color: rgb(56, 32, 49);
   color: White;
+}
+
 .account {
   margin-top: 150px; 
   margin-left: 130px;

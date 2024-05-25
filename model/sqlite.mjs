@@ -73,7 +73,7 @@ export let Edit = (eventName, eventDescription, eventPicture) => {
         throw err;
     }
 }
-};
+;
 
 // Function to insert form data into the database
 export const insertFormData = (formData) => {
