@@ -2,6 +2,8 @@ import express from 'express'
 import session from 'express-session';
 
 const homeController = await import(`../controllers/Home.mjs`)
+const signupController = await import('../controllers/Signup.mjs')
+
 
 const router = express.Router()
 
@@ -29,7 +31,7 @@ router.get('/home', async (req,res) => {
             atAbout: false,
             atEvent: false,
             atContact: false,
-            atAccount: false,
+            atSign: false,
             parkingName: parkingSiteNames
         });
     }
@@ -53,15 +55,15 @@ router.get('/about', async (req,res) => {
     }
 });
 
-router.get('/about', async (req,res) => {
+router.get('/events', async (req,res) => {
     try{
         //const parkingSiteNames = await homeController.showParkingSiteName(); αν χρειαστει κατι απο την database
-        res.render('AboutUsPage',{
+        res.render('ekdhloseis',{
             atHome: false,
             atAbout: false,
             atEvent: false,
-            atContact: false,
-            atAccount: true,
+            atContact: true,
+            atSign: false,
         });
     }
     catch (error) {
@@ -70,12 +72,16 @@ router.get('/about', async (req,res) => {
     }
 });
 
-router.get('/account', async (req,res) => {
+router.get('/signup', async (req,res) => {
     try{
-        //const parkingSiteNames = await homeController.showParkingSiteName(); αν χρειαστει κατι απο την database
+        const newDatas = await signupController.insertUserData();
+        console.log(newDatas);
         res.render('SignUp',{
-            atHome:false,
-            atAbout:false
+            atHome: false,
+            atAbout: false,
+            atEvent: false,
+            atContact: false,
+            atSign: true,
         });
     }
     catch (error) {
@@ -85,3 +91,22 @@ router.get('/account', async (req,res) => {
 });
 
 export default router ;
+
+router.get('/account', async (req,res) => {
+    try{
+        const parkingSiteNames = await homeController.showParkingSiteName();
+        console.log(parkingSiteNames);
+        res.render('account',{
+            atHome: true,
+            atAbout: false,
+            atEvent: false,
+            atContact: false,
+            atSign: false,
+            parkingName: parkingSiteNames
+        });
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});

@@ -47,7 +47,6 @@ setInterval(rotatePartnersImage, 3500);
 
 
 ///// Sign Up
-
 document.addEventListener('DOMContentLoaded', function() {
   const formElements = [
       document.getElementById('name'),
@@ -59,30 +58,27 @@ document.addEventListener('DOMContentLoaded', function() {
       document.getElementById('repeat-password')
   ];
 
-  const signUpButton = document.getElementById('sign-up-button');
+  const signUpButton = document.getElementById('signbtn');
   const phoneInput = document.getElementById('phone');
   const passwordInput = document.getElementById('password');
   const repeatPasswordInput = document.getElementById('repeat-password');
   const passwordMismatchMessage = document.getElementById('password-mismatch');
 
   function validateForm() {
+      console.log("Validating form...");
       const allFilled = formElements.every(input => input.value.trim() !== '');
       const phoneValid = /^\d{10}$/.test(phoneInput.value);
       const passwordsMatch = passwordInput.value === repeatPasswordInput.value;
       
-      if (allFilled && phoneValid) {
+      if (allFilled && phoneValid && passwordsMatch) {
           signUpButton.disabled = false;
-          signUpButton.classList.add('btn-enabled');
+          signUpButton.classList.add('signbtn-enabled');
       } else {
           signUpButton.disabled = true;
-          signUpButton.classList.remove('btn-enabled');
+          signUpButton.classList.remove('signbtn-enabled');
       }
 
-      if (!passwordsMatch && repeatPasswordInput.value.trim() !== '') {
-          passwordMismatchMessage.style.display = 'block';
-      } else {
-          passwordMismatchMessage.style.display = 'none';
-      }
+      passwordMismatchMessage.style.display = (!passwordsMatch && repeatPasswordInput.value.trim() !== '') ? 'block' : 'none';
   }
 
   phoneInput.addEventListener('input', () => {
@@ -90,14 +86,45 @@ document.addEventListener('DOMContentLoaded', function() {
       validateForm();
   });
 
-  repeatPasswordInput.addEventListener('blur', validateForm);
-
   formElements.forEach(element => {
       element.addEventListener('input', validateForm);
   });
-});
 
-document.addEventListener('DOMContentLoaded', function() {
+  function sendData() {
+      console.log("Sending data...");
+      const formData = new FormData();
+      formElements.forEach(input => {
+          formData.append(input.name, input.value);
+      });
+
+      fetch('/signup', {
+          method: 'POST',
+          body: formData
+      })
+      .then(response => {
+          if (!response.ok) {
+              throw new Error('Failed to sign up');
+          }
+          return response.json();
+      })
+      .then(data => {
+          console.log("Signup successful:", data);
+          // Redirect to a success page or show a success message
+      })
+      .catch(error => {
+          console.error("Error during signup:", error);
+          // Handle error
+      });
+  }
+
+  signUpButton.addEventListener('click', function() {
+      if (passwordInput.value === repeatPasswordInput.value) {
+          sendData();
+      } else {
+          passwordMismatchMessage.style.display = 'block';
+      }
+  });
+
   const togglePasswordButtons = document.querySelectorAll('.toggle-password');
 
   togglePasswordButtons.forEach(button => {

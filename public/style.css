@@ -404,22 +404,21 @@ input{
 }
 
 .toggle-password {
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  transform: translateY(-50%);
+  padding-top: 10px;
+  background-color: white;
+  color: rgba(54,15,42) ;
+  font-size: 15px;
+  font-weight: bold;
   border: none;
-  background: transparent;
   cursor: pointer;
-  padding: 0;
-  outline: none;
+  text-align: left;
 }
 
 .toggle-password:hover {
   text-decoration: underline;
 }
 
-.btn{
+.signbtn{
   background-color: rgba(54,15,42);
   color: white ;
   font-size: 16px;
@@ -430,23 +429,22 @@ input{
   cursor: pointer;
 }
 
-.btn[disabled] {
+.signbtn[disabled] {
   background-color: #cccccc;
   color: #666666;
   cursor: not-allowed;
 }
 
-.btn-enabled {
+.signbtn-enabled {
   background-color: rgba(54,15,42);
   color: white;
   cursor: pointer;
 }
 
-.btn-enabled:hover {
+.signbtn-enabled:hover {
   background-color: rgb(56, 32, 49);
   color: white;
 }
-
 
 footer {
   margin-top: 100px;
@@ -460,3 +458,7 @@ footer {
   
 }
 
+.account {
+  margin-top: 150px; 
+  margin-left: 130px;
+}
