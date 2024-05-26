@@ -5,7 +5,11 @@
             <li><a href="/home" {{#if atHome}}style="text-decoration: underline;"{{/if}}>Home</a></li>
             <li><a href="/about" {{#if atAbout}}style="text-decoration: underline;"{{/if}}>About Us</a></li>
             <li><a href="/events" {{#if atEvent}}style="text-decoration: underline;"{{/if}}>Our Events</a></li>
-            <li><a href="/signup" {{#if atSign}}style="text-decoration: underline;"{{/if}}>Sign Up</a></li>
+            {{#if atAccount}}
+            <li><a href="/account" style="text-decoration: underline;">Account</a></li>
+            {{else}}
+            <li><a href="/signup">Sign Up</a></li>
+            {{/if}}
         </ul>
     </nav>
     <button class="btn-header">Join Us!</button>

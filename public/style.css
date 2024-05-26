@@ -370,19 +370,7 @@ input{
   align-items: center;
 }
 
-.accept{
-  padding-left: 80px;
-}
 
-.accept h2{
-  font-size: 18px;
-}
-
-.error-message {
-  padding-top: 20px;
-  color: red;
-  display: none;
-}
 
 .full-name, .contact, .crt-password{
   display: flex;
@@ -399,8 +387,10 @@ input{
   width: 46%;
 }
 
-.password-input {
-  position: relative;
+.crt-password{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .toggle-password {
@@ -418,7 +408,13 @@ input{
   text-decoration: underline;
 }
 
-.signbtn{
+
+.accept h2{
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.submit_button{
   background-color: rgba(54,15,42);
   color: white ;
   font-size: 16px;
@@ -427,6 +423,7 @@ input{
   border: none;
   border-radius: 12px;
   cursor: pointer;
+  width: 20%;
 }
 
 .signbtn[disabled] {
@@ -444,7 +441,7 @@ input{
 .signbtn-enabled:hover {
   background-color: rgb(56, 32, 49);
   color: white;
-}
+}*/
 
 footer {
   margin-top: 100px;

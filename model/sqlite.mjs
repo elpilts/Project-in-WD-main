@@ -1,4 +1,5 @@
 import sqlite from 'better-sqlite3';
+import bcrypt from 'bcrypt';
 
 // Create a function to open the database connection
 const openDatabaseConnection = () => {
@@ -24,18 +25,19 @@ export const getParkingSiteName = () => {
 };
 
 // Function to insert form data into the database
-export const insertFormData = (formData) => {
+export const insertFormData = async (formData) => {
     const db = openDatabaseConnection();
 
     try {
+        const hashedPassword = await bcrypt.hash(formData.password, 10); // Hash the password
         const query = db.prepare('INSERT INTO Volunteer (Name, Email, Phone, Age, Password, Studies) VALUES (?, ?, ?, ?, ?, ?)');
-        query.run(formData.name, formData.email, formData.phone, formData.age, formData.password, formData.fieldOfStudies);
+        query.run(formData.name, formData.email, formData.phone, formData.age, hashedPassword, formData.fieldOfStudies);
         return Promise.resolve(formData); // Resolve with the inserted data
     } catch (error) {
         console.error('Error inserting form data:', error);
         return Promise.reject(error);
     } finally {
-        // Close database connection or do any necessary cleanup
+        db.close(); // Close database connection
     }
 };
 
@@ -54,3 +56,17 @@ export const deleteUserDataByEmail = (email) => {
     }
 };
 
+export const getUserByEmail = (email) => {
+    const db = openDatabaseConnection();
+    
+    try {
+        const query = db.prepare('SELECT * FROM Volunteer WHERE Email = ?');
+        const user = query.get(email);
+        return user;
+    } catch (err) {
+        console.error("Error fetching user by email:", err);
+        throw err;
+    } finally {
+        db.close();
+    }
+};

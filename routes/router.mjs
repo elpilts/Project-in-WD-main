@@ -1,6 +1,7 @@
 import express from 'express';
 import session from 'express-session';
-import { insertFormData, deleteUserDataByEmail } from '../model/sqlite.mjs';
+import bcrypt from 'bcrypt';
+import { insertFormData, deleteUserDataByEmail, getUserByEmail } from '../model/sqlite.mjs';
 
 const homeController = await import(`../controllers/Home.mjs`);
 const signupController = await import('../controllers/Signup.mjs');
@@ -69,60 +70,13 @@ router.get('/events', async (req, res) => {
 });
 
 router.get('/signup', (request, response) => {
-    response.send(`
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-        <div class="container">
-            <h1 class="text-center mt-3 mb-3">Submit Form Data in Node.js</h1>
-            <div class="card">
-                <div class="card-header">Sample Form</div>
-                <div class="card-body">
-                    <form method="POST" action="/signup">
-                        <div class="info">
-                            <div class="full-name">
-                                <div class="name">
-                                    <h3>Name & Surname *</h3>
-                                    <input type="text" id="name" name="name" placeholder="Type your Name" required>
-                                </div>
-                                <div class="age">
-                                    <h3>Age *</h3>
-                                    <input type="text" id="age" name="age" placeholder="Type your Age" required>
-                                </div>
-                            </div>
-                            <div class="contact">
-                                <div class="email">
-                                    <h3>Email *</h3>
-                                    <input type="email" id="email" name="email" placeholder="Type your Email" required>
-                                </div>
-                                <div class="phone">
-                                    <h3>Phone Number *</h3>
-                                    <input type="tel" id="phone" name="phone" placeholder="Type your Phone Number" maxlength="10" required>
-                                </div>
-                            </div>
-                            <div class="uni">
-                                <h3>Field of Studies in University of Patras *</h3>
-                                <input type="text" id="field-of-studies" name="field-of-studies" placeholder="Type your Field of Studies" required>
-                            </div>
-                            <div class="crt-password">
-                                <div class="password">
-                                    <h3>Password *</h3>
-                                    <input type="password" id="password" name="password" placeholder="Create a Password" required>
-                                    <button type="button" class="toggle-password">Show</button>
-                                </div>
-                                <div class="rpt-password">
-                                    <h3>Repeat Password *</h3>
-                                    <input type="password" id="repeat-password" name="repeat-password" placeholder="Repeat your Password" required>
-                                    <button type="button" class="toggle-password">Show</button>
-                                </div>
-                                <div class="mb-3">
-                                    <input type="submit" name="submit_button" class="btn btn-primary" value="Add">
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    `);
+    response.render('SignUp', {
+        atHome: false,
+        atAbout: false,
+        atEvent: false,
+        atContact: false,
+        atSign: true,
+    });
 });
 
 router.post('/signup', (request, response) => {
@@ -160,7 +114,11 @@ router.get('/account', (request, response) => {
     };
 
     // Render the account view with user data
-    response.render('account', { user: userData });
+    response.render('account', { 
+        user: userData,
+        atAccount: true,
+
+    });
 });
 
 router.delete('/delete-account', (req, res) => {
@@ -183,18 +141,46 @@ router.delete('/delete-account', (req, res) => {
     }
 });
 
-router.get('/login', async (req, res) => {
+router.get('/login', (req, res) => {
+    res.render('login');
+});
+
+
+router.post('/login', async (req, res) => {
+    const { 'login-email': email, 'login-password': password } = req.body;
+
+    if (!email || !password) {
+        return res.status(400).json({ success: false, message: 'Email and password are required.' });
+    }
+
     try {
-        res.render('LogIn', {
-            atHome: true,
-            atAbout: false,
-            atEvent: false,
-            atContact: false,
-            atSign: false,
-        });
+        const user = await getUserByEmail(email);
+        
+        if (!user) {
+            console.log('No user found with the provided email.');
+            return res.redirect('/signup');
+            
+            return res.status(401).json({ success: false, message: 'Invalid email or password.' });
+        }
+
+        console.log('User found, checking password...');
+        console.log(password);
+        const hashedPassword = await bcrypt.hash(password, 10); // Wait for the hashing to complete
+        console.log(hashedPassword);
+        const passwordMatch = await bcrypt.compare(password, hashedPassword);
+        console.log(email);
+        console.log("User:", user);
+        if (passwordMatch) {
+            console.log('Password matched. User logged in successfully.');
+            return res.redirect(`/account?name=${user.Name}&age=${user.Age}&email=${user.Email}&phone=${user.Phone}&fieldOfStudies=${user.Studies}`);
+            return res.status(200).json({ success: true, message: 'Logged in successfully.' });
+        } else {
+            console.log('Incorrect password.');
+            return res.status(401).json({ success: false, message: 'Invalid email or password.' });
+        }
     } catch (error) {
-        console.error(error);
-        res.status(500).send('Internal Server Error');
+        console.error('Error logging in:', error);
+        res.status(500).json({ success: false, message: 'Internal server error.' });
     }
 });
 
