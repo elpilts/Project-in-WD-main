@@ -172,6 +172,7 @@ router.get('/events/edit', function(request, response, next){
 	response.send(`
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
         <main>
             <div class="edit">
                 <h1> Edit the Event</h1>
@@ -223,6 +224,7 @@ router.get('/events/insert', function(request, response, next){
 	response.send(`
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
     <main>
     <div class="create">
         <h1> Create New Event</h1>
@@ -272,7 +274,7 @@ router.get('/events/delete', function(request, response, next){
 	response.send(`
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
     <main>
     <div class="deleteEvent">
         <h1> Delete</h1>
@@ -307,15 +309,3 @@ router.post('/events/delete', function(request, response, next){
             response.status(500).send('An error occurred while inserting data.');
         });
 });
-
-// router.post('/events/delete', function(req, res, next){
-//     const name = {name: req.body.name};
-//     DeleteEvent(name)
-//         .then(() => {
-//             res.redirect('/events')
-//         })
-//         .catch(error => {
-//             console.error('Error inserting data:', error);
-//             res.status(500).send('An error occurred while inserting data.');
-//         });
-// });
