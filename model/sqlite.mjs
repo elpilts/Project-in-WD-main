@@ -32,7 +32,6 @@ export let Events = () => {
     let info;
     try { //trexei query & το επιστρέφει
         info = query.all();
-        console.log(info);
         return info;
     }
     catch (err) {

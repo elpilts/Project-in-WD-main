@@ -60,7 +60,6 @@ router.get('/home', async (req,res) => {
 router.get('/events', async (req,res) => {
     try{
         const events = await eventController.OurEvents();
-        console.log(events);
         res.render('EventPage',{
             atHome: false,
             atAbout: false,
