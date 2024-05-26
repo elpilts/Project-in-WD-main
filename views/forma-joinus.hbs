@@ -1,51 +1,51 @@
-
-        <form action="" class="forma melous">
-            <h1>Φόρμα Εγγραφής στον Οργανισμό</h1>
+<class="forma">
+        <form action="/forma-eggrafhs" class="forma melous">
+            <h1>Form to Join BEST</h1>
             <fieldset class="first">
-                <label for="onoma"> Ονοματεπώνυμο <br> </label>
-                <input type="text" id="onoma" name="onoma" placeholder="Όνομα" required>
-                <input type="text" id="eponymo" name="eponymo" placeholder="Επώνυμο" required>
+                <label for="onoma"> Name and surname <br> </label>
+                <input type="text" id="onoma" name="onoma" placeholder="Name" required>
+                <input type="text" id="eponymo" name="eponymo" placeholder="Surname" required>
             </fieldset>
             <fieldset>
-                <label for="thl"> Στοιχεία εποικοινωνίας </label>
-                <input type="tel" id="thl" name="thl" placeholder="Τηλέφωνο" pattern="[0-9]{10:11}" required>
-                <input type="email" id="email" name="email" placeholder="Διεύθυνση email" required>
+                <label for="thl"> Contact Info </label>
+                <input type="tel" id="thl" name="thl" placeholder="Phone" pattern="[0-9]{10:11}" required>
+                <input type="email" id="email" name="email" placeholder="Email" required>
             </fieldset>
             <fieldset>
-                <label for="penepistimio">Διάλεξε το πανεπιστήμιο που σπουδάζεις<br></label>
+                <label for="penepistimio">University<br></label>
                 <select id="penepistimio" name="penepistimio" required>
-                    <option value="papa">Πανεπιστήμιο Πατρών</option>
-                    <option value="allopan">Άλλο</option>
+                    <option value="papa">Patras</option>
+                    <option value="allopan">Other</option>
                 </select>
             </fieldset>
             <fieldset>
-                <label for="allop">  Αν έβαλες την επιλογή "Άλλο", πες μας ποιο:<br></label>
-                <input type="text" id="allop" name="allo-panep" placeholder="'Αλλο Πανεπιστήμιο">
+                <label for="allop">  Other: <br></label>
+                <input type="text" id="allop" name="allo-panep" placeholder="Other Uni">
             </fieldset>
             <fieldset>
-                <label for="tmhma">Διάλεξε το Τμήμα σου:<br></label>
+                <label for="tmhma">Studies<br></label>
                 <select id="tmhma" name="tmhma" required>
-                    <option value="hmty">Ηλεκτρολόγων Μηχανικών &amp Τεχνολογίας Υπολογιστών</option>
-                    <option value="mhx">Μηχανολόγων &amp Αεροναυπηγών Μηχανικών</option>
-                    <option value="xhmm">Χημικών Μηχανικών</option>
-                    <option value="fys">Φυσικού</option>
-                    <option value="geo">Γεωλογίας</option>
-                    <option value="allotm">Άλλο</option>
+                    <option value="hmty">Electrical Engineering &amp Computer Science</option>
+                    <option value="mhx">Michanical Engineering </option>
+                    <option value="fys">Physics</option>
+                    <option value="geo">Geology</option>
+                    <option value="allotm">Other</option>
                 </select>
             </fieldset>
             <fieldset>
-                <label for="allot"> Αν έβαλες την επιλογή "Άλλο", πες μας ποιο:<br></label>
-                <input type="text" id="sxolh" name="sxolh" placeholder="Σχολή">
+                <label for="allot"> Other studies:<br></label>
+                <input type="text" id="sxolh" name="sxolh" placeholder="Other Studies">
             </fieldset>
             <fieldset class="etos-spoudwn">
-                <label for="A">Έτος σπουδών<br></label>
-                <input type="radio" name="etos spoudwn" id="A"><label for="A">Α</label>
-                <input type="radio" name="etos spoudwn" id="B"><label for="B">Β</label>
-                <input type="radio" name="etos spoudwn" id="C"><label for="C">Γ</label>
-                <input type="radio" name="etos spoudwn" id="D"><label for="D">Δ</label>
-                <input type="radio" name="etos spoudwn" id="E"><label for="E">Ε</label>
-                <input type="radio" name="etos spoudwn" id="alloet"><label for="alloet">Άλλο</label>
+                <label for="A">Year of Studies<br></label>
+                <input type="radio" name="etos spoudwn" id="A"><label for="A">A</label>
+                <input type="radio" name="etos spoudwn" id="B"><label for="B">B</label>
+                <input type="radio" name="etos spoudwn" id="C"><label for="C">C</label>
+                <input type="radio" name="etos spoudwn" id="D"><label for="D">D</label>
+                <input type="radio" name="etos spoudwn" id="E"><label for="E">E</label>
+                <input type="radio" name="etos spoudwn" id="alloet"><label for="alloet">Other</label>
               </fieldset>
-              <input type="submit" value="Υποβολή">
+              <input type="submit" value="Submit">
           </form>
+</class>
     

@@ -538,13 +538,14 @@ footer {
 }
 
 .Edit, .Delete, .Insert{
-  margin: 10px 10px;
   background-color: rgba(54,15,42);
   color: white ;
   font-size: 16px;
   font-weight: bold;
   padding: 7px 15px;
   border-radius: 12px;
+  display: block;
+  margin: 0px auto 100px auto;
 }
 
 .Edit:hover, .Delete:hover, .Insert:hover {
@@ -556,11 +557,6 @@ footer {
 
 div:last-of-type{
   margin-bottom: 0px;
-}
-
-.Insert{
-  display: block;
-  margin: 0px auto 100px auto;
 }
 
 @media (max-width: 1024px) {
@@ -850,4 +846,134 @@ div:last-of-type{
 
 .aboutusimage{
   width: 100%;
+}
+
+/* forma */
+
+.forma{
+  width:auto;
+  margin-top: 200px;
+  margin-bottom: 100px;
+  margin-left: 200px;
+  margin-right: 200px;
+}
+
+.forma form {
+  width: 600px;
+  padding: 20px;
+  border-radius: 5px;
+  color: #360f2a;
+}
+
+.forma fieldset {
+  margin-bottom: 20px;
+  border: 1px solid #808080;
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+
+.forma h1{
+  color: #fff;
+  text-align: center;
+  background-color: #68324a;
+  margin: 40px;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.forma label {
+  display: block;
+  margin: 20px 0px 0px 15px;
+  font-size: 16px;
+}
+
+.forma #onoma{
+  margin-right: 35px;
+}
+
+.forma #thl{
+  margin-right: 35px;
+}
+
+.forma .etos-spoudwn label{
+  display: inline;
+}
+
+.forma .etos-spoudwn label:first-child{
+  display: block;
+}
+
+.forma .omada label{
+  display: inline;
+}
+
+.forma .omada label:first-child{
+  display: block;
+}
+
+.forma:placeholder-shown{
+  font-size: 15px;
+}
+
+.forma input[type="text"],
+.forma input[type="tel"],
+.forma input[type="email"],
+.forma input[type="radio"],
+.forma input[type="checkbox"],
+.forma select{
+  padding: 8px;
+  margin-left: 15px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.forma input[type="radio"],
+.forma input[type="checkbox"],
+.forma select{
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.forma #A1{
+  margin-top: 20px;
+}
+
+.forma select{
+  color: #fff;
+  background-color: #68324a;
+  width: 95%;
+  margin-bottom: 15px;
+}
+
+.forma input[type="text"],
+.forma input[type="tel"],
+.forma input[type="email"]{
+  border: none;
+  margin: 30px 0px 15px 15px;
+  outline: none;
+  border-radius: 0px;
+  border-bottom: 1px dotted #808080;
+  padding-bottom: 5px;
+}
+
+.forma ::placeholder{
+  color: #808080;
+}
+
+.forma input[type="submit"] {
+  padding: 15px 30px;
+  background-color: #360f2a;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+}
+
+.forma input[type="submit"]:hover{
+  background-color: #68324a;
+  border: #61447e;
+  border-width: 3px;
+  border-style:inset;
 }

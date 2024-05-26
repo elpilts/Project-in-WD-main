@@ -93,6 +93,25 @@ router.get('/events/insert', async (req,res) => {
     }
 });
 
+router.get('/forma-eggrafhs', async (req,res) => {
+    try{
+        res.render('forma-joinus',{
+            atHome: false,
+            atAbout: false,
+            atEvent: false,
+            atContact: false,
+            atAccount: false,
+            atInsert: false,
+            atEdit: false,
+            atFormaEgg: true
+        });
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
 router.get('/events/edit', async (req, res) => {
     res.render('EditPage',{
         atHome: false,
