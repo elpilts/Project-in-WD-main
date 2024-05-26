@@ -96,18 +96,6 @@ router.get('/events/insert', async (req,res) => {
     }
 });
 
-// router.delete('/events/:eventName', async (req, res) => {
-//     const eventName = req.params.eventName;
-//     console.log("name:", eventName);
-//     try {
-//         await deleteController.DeleteEvent( eventName );
-//         res.sendStatus(204);
-//     } catch (error) {
-//         console.error('Error deleting event:', error);
-//         res.status(500).send('Internal Server Error');
-//     }
-// });
-
 router.get('/events/edit', async (req, res) => {
     res.render('EditPage',{
         atHome: false,
@@ -120,15 +108,16 @@ router.get('/events/edit', async (req, res) => {
     });
 });
 
-router.get('/events/insert', async (req, res) => {
-    res.render('NewEvent',{
+router.get('/events/delete', async (req, res) => {
+        res.render('Delete',{
         atHome: false,
         atAbout: false,
         atEvent: false,
         atContact: false,
         atAccount: false,
-        atInsert: true,
-        atEdit: false
+        atInsert: false,
+        atEdit: false,
+        atDelete: true
     });
 });
 
@@ -285,22 +274,16 @@ router.post('/events/insert', function(request, response, next){
         });
 });
 
-router.delete('/:name', function(req, res, next){
-    const db = openDatabaseConnection();
-    let name = req.params.name;
-    // DeleteEvent(name)
-        // .then(() => {
-        //     res.send('Data deleted successfully!');
-        // })
-        // .catch(error => {
-        //     console.error('Error inserting data:', error);
-        //     res.status(500).send('An error occurred while inserting data.');
-        // });
-    db.query('DELETE FROM Event WHERE Name = ' + name, (err,result)=>{
-        if(err){
-            throw err;
-        } else{
-            res.send(result);
-        }
-    });
+
+
+router.post('/events/delete', function(req, res, next){
+    const name = {name: req.body.name};
+    DeleteEvent(name)
+        .then(() => {
+            res.redirect('/events')
+        })
+        .catch(error => {
+            console.error('Error inserting data:', error);
+            res.status(500).send('An error occurred while inserting data.');
+        });
 });

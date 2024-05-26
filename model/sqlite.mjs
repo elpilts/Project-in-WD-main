@@ -44,6 +44,7 @@ export let Events = () => {
 }
 
 export let Delete = (deletename) => {
+    const db = openDatabaseConnection();
     const query = db.prepare('DELETE FROM Event WHERE Name = ?'); //οριζει query
     let info;
     try { //trexei query & το επιστρέφει
@@ -52,6 +53,8 @@ export let Delete = (deletename) => {
     }
     catch (err) {
         throw err;
+    } finally{
+        db.close();
     }
 }
 

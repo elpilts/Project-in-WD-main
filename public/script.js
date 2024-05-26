@@ -1,3 +1,5 @@
+const deleteController = await import(`../controllers/Delete.mjs`)
+
 //numbers
 let valueDisplays = document.querySelectorAll(".num");
 let interval = 4000;
@@ -131,35 +133,35 @@ document.addEventListener('DOMContentLoaded', function() {
 // };
 
 //Delete
-// function deleteDiv(){
-//     const del = document.querySelectorAll('.Delete');
-//     del.forEach(button => {
-//         button.addEventListener('click', function() {
-//             const parentDiv = button.closest('.event div');
-//             if (parentDiv) {
-//               const delEvent = parentDiv.querySelector('em').textContent;
-//               localStorage.setItem('deletedElementId', parentDiv.id); //για να διαγραφει μονιμα
-//               parentDiv.remove();
-//               const formData = new FormData();
-//               formData.append('name', eventName);
-//               //post method
-//               fetch('/events', {
-//                 method: 'POST',
-//                 body: formData
-//               })
-//               .then(response => {
-//                   if (response.ok) {
-//                       console.log('Event deleted successfully');
-//                   } else {
-//                       console.error('Failed to delete event');
-//                   }
-//               })
-
-
-//             }
-//         });
-//     });
-// };
+function deleteDiv(){
+    const del = document.querySelectorAll('.Delete');
+    del.forEach(button => {
+        button.addEventListener('click', function() {
+            const parentDiv = button.closest('.event div');
+            if (parentDiv) {
+                deleteController.DeleteEvent(parentDiv);
+                return parentDiv;
+            //   const delEvent = parentDiv.querySelector('em').textContent;
+            //   localStorage.setItem('deletedElementId', parentDiv.id); //για να διαγραφει μονιμα
+            //   parentDiv.remove();
+            //   const formData = new FormData();
+            //   formData.append('name', eventName);
+            //   //post method
+            //   fetch('/events', {
+            //     method: 'POST',
+            //     body: formData
+            //   })
+            //   .then(response => {
+            //       if (response.ok) {
+            //           console.log('Event deleted successfully');
+            //       } else {
+            //           console.error('Failed to delete event');
+            //       }
+            //   })
+            }
+        });
+    });
+};
 
 async function deleteEvent(button) {
   const eventName = button.closest('.event').getAttribute('data-event-name');
