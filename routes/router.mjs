@@ -8,7 +8,6 @@ const deleteController = await import(`../controllers/Delete.mjs`)
 const editController = await import(`../controllers/Edit.mjs`)
 const signupController = await import('../controllers/Signup.mjs')
 
-
 const router = express.Router()
 
 // Use the express-session middleware
@@ -80,23 +79,23 @@ router.get('/events', async (req,res) => {
 //     }
 // });
 
-router.get('/event/insert', async (req,res) => {
-    try{
-        res.render('NewEvent',{
-            atHome: false,
-            atAbout: false,
-            atEvent: false,
-            atContact: false,
-            atAccount: false,
-            atInsert: true,
-            atEdit: false
-        });
-    }
-    catch (error) {
-        console.error(error);
-        res.status(500).send('Internal Server Error');
-    }
-});
+// router.get('/event/insert', async (req,res) => {
+//     try{
+//         res.render('NewEvent',{
+//             atHome: false,
+//             atAbout: false,
+//             atEvent: false,
+//             atContact: false,
+//             atAccount: false,
+//             atInsert: true,
+//             atEdit: false
+//         });
+//     }
+//     catch (error) {
+//         console.error(error);
+//         res.status(500).send('Internal Server Error');
+//     }
+// });
 
 router.delete('/events/:eventName', async (req, res) => {
     const eventName = req.params.eventName;
@@ -121,48 +120,48 @@ router.delete('/events/:eventName', async (req, res) => {
 //     }
 // });
 
-router.put('/events/edit/:eventName', async (req, res) => {
-    const eventName = req.params.eventName;
-    const eventDescription = req.params.eventDescription;
-    const eventPicture = req.params.eventPicture;
-    try {
-        console.log("name:", eventName);
-        await editController.EditEvent(eventName, eventDescription, eventPicture);
-    } catch (error) {
-        console.error('Error deleting event:', error);
-        res.status(500).send('Internal Server Error');
-    }
-});
-
-router.get('/events/edit', async (req,res) => {
-    try{
-        res.render('EditPage',{
-            atHome: false,
-            atAbout: false,
-            atEvent: false,
-            atContact: false,
-            atAccount: false,
-            atInsert: false,
-            atEdit: true
-        });
-    }
-    catch (error) {
-        console.error(error);
-        res.status(500).send('Internal Server Error');
-    }
-});
-
-// router.get('/events/edit', async (req, res) => {
-//     res.render('EditPage',{
-//         atHome: false,
-//         atAbout: false,
-//         atEvent: false,
-//         atContact: false,
-//         atAccount: false,
-//         atInsert: false,
-//         atEdit: true
-//     });
+// router.put('/events/edit/:eventName', async (req, res) => {
+//     const eventName = req.params.eventName;
+//     const eventDescription = req.params.eventDescription;
+//     const eventPicture = req.params.eventPicture;
+//     try {
+//         console.log("name:", eventName);
+//         await editController.EditEvent(eventName, eventDescription, eventPicture);
+//     } catch (error) {
+//         console.error('Error deleting event:', error);
+//         res.status(500).send('Internal Server Error');
+//     }
 // });
+
+// router.get('/events/edit', async (req,res) => {
+//     try{
+//         res.render('EditPage',{
+//             atHome: false,
+//             atAbout: false,
+//             atEvent: false,
+//             atContact: false,
+//             atAccount: false,
+//             atInsert: false,
+//             atEdit: true
+//         });
+//     }
+//     catch (error) {
+//         console.error(error);
+//         res.status(500).send('Internal Server Error');
+//     }
+// });
+
+router.get('/events/edit', async (req, res) => {
+    res.render('EditPage',{
+        atHome: false,
+        atAbout: false,
+        atEvent: false,
+        atContact: false,
+        atAccount: false,
+        atInsert: false,
+        atEdit: true
+    });
+});
 
 // router.post('/events/edit', async (req, res) => {
 //     try {
@@ -225,3 +224,53 @@ router.get('/account', async (req,res) => {
         res.status(500).send('Internal Server Error');
     }
 });
+
+//Insert Event
+// app.get('/events/insert', function(request, response, next){
+
+// 	response.send(`
+//     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+// 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+//     <main>
+//     <div class="create">
+//         <h1> Create New Event</h1>
+//         <form id="createForm" action="/events/insert" method="POST">
+//             <div class="c-name">
+//                 <label for="name"> Name of the Event <br> </label>
+//                 <input type="text" id="name" name="name" placeholder="Event Name" required>
+//             </div>
+//             <div class="c-description">
+//                 <label for="description"> Description of the Event <br> </label>
+//                 <input type="text" id="description" name="description" placeholder="Description" required>
+//             </div>
+//             <div class="c-picture">
+//                 <label for="picture"> Picture of the Event <br> </label>
+//                 <input type="text" id="picture" name="picture" placeholder="Picture Link" required>
+//             </div>
+//             <div class="create-btn">
+//                 <input type="submit" value="Create" />
+//             </div>
+//         </form>
+//     </div>
+// </main>
+// 	`);
+// });
+
+// app.post('/events/insert', function(request, response, next){
+//     // Parse form data
+//     const eventData = {
+//         name: request.body.name,
+//         description: request.body.description,
+//         picture: request.body.picture
+//     };
+
+//     // Call function to insert data into the database
+//     insertController.InsertEvent(eventData)
+//         .then(() => {
+//             response.send('Data inserted successfully!');
+//         })
+//         .catch(error => {
+//             console.error('Error inserting data:', error);
+//             response.status(500).send('An error occurred while inserting data.');
+//         });
+// });

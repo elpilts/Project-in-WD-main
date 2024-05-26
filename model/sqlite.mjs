@@ -100,7 +100,27 @@ export const insertFormData = (formData) => {
     }
 };
 
-export const eventData = (eventData) => {
+export const edit = (editData) => {
+    // Open database connection
+    const db = openDatabaseConnection();
+
+    try {
+        // Prepare and execute the insert query
+        const query = db.prepare('UPDATE Event SET Description = ?, Picture = ? WHERE Name = ?');
+        query.run(editData.description, editData.picture, editData.name);
+
+        // Return a promise to handle asynchronous operations
+        return Promise.resolve();
+    } catch (error) {
+        console.error('Error inserting form data:', error);
+        return Promise.reject(error);
+    } finally {
+        // Close the database connection
+        db.close();
+    }
+};
+
+export const Insert = (eventData) => {
     // Open database connection
     const db = openDatabaseConnection();
 

@@ -1,7 +1,7 @@
 <main>
         <div class="create">
             <h1> Create New Event</h1>
-            <form id="createForm" action="/insert-event" method="POST">
+            <form id="createForm" action="/events/insert" method="POST">
                 <div class="c-name">
                     <label for="name"> Name of the Event <br> </label>
                     <input type="text" id="name" name="name" placeholder="Event Name" required>
@@ -15,8 +15,8 @@
                     <input type="text" id="picture" name="picture" placeholder="Picture Link" required>
                 </div>
                 <div class="create-btn">
-		            <input type="submit" value="Create" />
-		        </div>
-            </form>
+                    <input type="submit" value="Create" />
+                </div>
+        </form>
         </div>
     </main>

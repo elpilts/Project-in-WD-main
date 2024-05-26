@@ -1,9 +1,9 @@
 const model = await import(`../model/sqlite.mjs`)
 
-export async function InsertEvent(req,res) {
-    console.log('Received data:', req.params.name, req.params.description, req.params.picture);
+export async function InsertEvent(eventdata) {
+    console.log('Received data:', eventdata);
     try {
-        const events = await model.Insert(req.params.name,req.params.description,req.params.picture)
+        const events = await model.Insert(eventdata);
 
         return events
     } catch(err) {

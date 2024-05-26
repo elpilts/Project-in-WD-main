@@ -6,7 +6,7 @@
             {{#each ourevents}}
                 <div class="event">
                     <h2>
-                        <em>{{Name}}</em><a href="/events/edit"><button onclick="editEvent(this)" class="Edit">Edit</button></a><button onclick="deleteEvent(this)" id="{{Name}}" class="Delete">Delete</button>
+                        <em>{{Name}}</em><a href="/events/edit" {{#if atEdit}}style="text-decoration: underline;"{{/if}}><button class="Edit">Edit</button></a><button onclick="deleteEvent(this)" id="{{Name}}" class="Delete">Delete</button>
                     </h2>
                     <div class="container-event">
                         <p>{{Description}}</p>
@@ -15,4 +15,4 @@
                 </div>
             {{/each}}
         {{/if}}
-        <a href="/insert-event"><button class="Insert">Create a new event</button></a>
+        <a href="/events/insert" {{#if atInsert}}style="text-decoration: underline;"{{/if}}><button class="Insert">Create a new event</button></a>
