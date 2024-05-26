@@ -8,7 +8,6 @@ const insertController = await import(`../controllers/Insert.mjs`)
 const deleteController = await import(`../controllers/Delete.mjs`)
 const editController = await import(`../controllers/Edit.mjs`)
 const signupController = await import('../controllers/Signup.mjs')
-// const con = await import('./connection');
 
 const openDatabaseConnection = () => {
     const db = sqlite('db/Project_WebD_db.db');
@@ -52,7 +51,7 @@ router.get('/home', async (req,res) => {
     }
 });
 
-router.get('/events', async (req,res) => {
+router.get('/events', async (req,res) => { //If admin:, if not: Events-no
     try{
         const events = await eventController.OurEvents();
         res.render('EventPage',{
