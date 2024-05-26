@@ -3,8 +3,6 @@ import { engine } from 'express-handlebars';
 import router from './routes/router.mjs';
 import session from 'express-session';
 import { insertFormData } from './model/sqlite.mjs';
-import { edit } from './model/sqlite.mjs';
-import { Insert } from './model/sqlite.mjs';
 
 const app = express();
 const PORT = process.env.PORT || '3001';
@@ -92,106 +90,6 @@ app.post('/form/submit', function(request, response, next){
 
     // Call function to insert data into the database
     insertFormData(formData)
-        .then(() => {
-            response.send('Data inserted successfully!');
-        })
-        .catch(error => {
-            console.error('Error inserting data:', error);
-            response.status(500).send('An error occurred while inserting data.');
-        });
-});
-
-app.get('/events/edit', function(request, response, next){
-
-	response.send(`
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <main>
-            <div class="edit">
-                <h1> Edit the Event</h1>
-                <form id="editForm" action="/events/edit" method="POST">
-                    <div class="name">
-                        <label for="name"> Name of the Event you want to change <br> </label>
-                        <input type="text" id="name" name="name" placeholder="Event Name">
-                    </div>
-                    <div class="description">
-                        <label for="description"> Description of the Event <br> </label>
-                        <input type="text" id="description" name="description" placeholder="Description">
-                    </div>
-                    <div class="picture">
-                        <label for="picture"> Picture of the Event <br> </label>
-                        <input type="text" id="picture" name="picture" placeholder="Picture Link">
-                    </div>
-                    <div class="edit-btn">
-		                <input type="submit" value="Done" />
-		            </div>
-                </form>
-            </div>
-        </main>
-	`);
-
-
-});
-
-app.post('/events/edit', function(request, response, next){
-    // Parse form data
-    const editData = {
-        name: request.body.name,
-        description: request.body.description,
-        picture: request.body.picture
-    };
-
-    // Call function to insert data into the database
-    edit(editData)
-        .then(() => {
-            response.send('Data inserted successfully!');
-        })
-        .catch(error => {
-            console.error('Error inserting data:', error);
-            response.status(500).send('An error occurred while inserting data.');
-        });
-});
-
-app.get('/events/insert', function(request, response, next){
-
-	response.send(`
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <main>
-    <div class="create">
-        <h1> Create New Event</h1>
-        <form id="createForm" action="/events/insert" method="POST">
-            <div class="c-name">
-                <label for="name"> Name of the Event <br> </label>
-                <input type="text" id="name" name="name" placeholder="Event Name" required>
-            </div>
-            <div class="c-description">
-                <label for="description"> Description of the Event <br> </label>
-                <input type="text" id="description" name="description" placeholder="Description" required>
-            </div>
-            <div class="c-picture">
-                <label for="picture"> Picture of the Event <br> </label>
-                <input type="text" id="picture" name="picture" placeholder="Picture Link" required>
-            </div>
-            <div class="create-btn">
-                <input type="submit" value="Create" />
-            </div>
-        </form>
-    </div>
-</main>
-	`);
-});
-
-app.post('/events/insert', function(request, response, next){
-    // Parse form data
-    const eventData = {
-        name: request.body.name,
-        description: request.body.description,
-        picture: request.body.picture
-    };
-
-    // Call function to insert data into the database
-    Insert(eventData)
         .then(() => {
             response.send('Data inserted successfully!');
         })

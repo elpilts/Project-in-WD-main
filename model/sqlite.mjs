@@ -100,7 +100,7 @@ export const insertFormData = (formData) => {
     }
 };
 
-export const edit = (editData) => {
+export const Edit = (editData) => {
     // Open database connection
     const db = openDatabaseConnection();
 
