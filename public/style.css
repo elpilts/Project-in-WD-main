@@ -370,19 +370,7 @@ input{
   align-items: center;
 }
 
-.accept{
-  padding-left: 80px;
-}
 
-.accept h2{
-  font-size: 18px;
-}
-
-.error-message {
-  padding-top: 20px;
-  color: red;
-  display: none;
-}
 
 .full-name, .contact, .crt-password{
   display: flex;
@@ -399,8 +387,10 @@ input{
   width: 46%;
 }
 
-.password-input {
-  position: relative;
+.crt-password{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .toggle-password {
@@ -418,7 +408,13 @@ input{
   text-decoration: underline;
 }
 
-.signbtn{
+
+.accept h2{
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.submit_button{
   background-color: rgba(54,15,42);
   color: white ;
   font-size: 16px;
@@ -427,6 +423,7 @@ input{
   border: none;
   border-radius: 12px;
   cursor: pointer;
+  width: 20%;
 }
 
 .signbtn[disabled] {
@@ -444,7 +441,7 @@ input{
 .signbtn-enabled:hover {
   background-color: rgb(56, 32, 49);
   color: white;
-}
+}*/
 
 footer {
   margin-top: 100px;
@@ -715,6 +712,28 @@ div:last-of-type{
 .deleteEvent{
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+.card {
+  margin-bottom: 20px;
+}
+
+.deleteAccountBtn {
+  background-color: rgba(54, 15, 42);
+  color: white;
+  font-size: 16px;
+  padding: 7px 15px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+
+
+.login{
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -722,18 +741,27 @@ div:last-of-type{
 }
 
 .deleteEvent div{
+.login-email, .login-password{
   padding-bottom: 15px;
   text-align: center;
   border: none;
 }
 
 .deleteEvent input{
+.login-email input{
   font-size: 18px;
   padding-left: 10px;
   border-radius: 8px;
 }
 
 .deleteEvent h1{
+.login-password input{
+  font-size: 18px;
+  padding-left: 10px;
+  border-radius: 8px;
+}
+
+.login h1{
   font-size: 35px;
   padding-bottom: 20px;
 }
@@ -744,6 +772,13 @@ div:last-of-type{
 }
 
 .deleteEvent-btn{
+.login h2{
+  font-size: 15px;
+  text-align: center;
+}
+
+
+.loginbtn{
   margin-top: 10px;
   background-color: rgba(54,15,42);
   color: white ;
@@ -759,4 +794,10 @@ div:last-of-type{
 .deleteEvent-btn:hover {
   background-color: rgb(56, 32, 49);
   color: White;
+}
+
+.loginbtn:hover {
+  background-color: rgb(56, 32, 49);
+  color: White;
+
 }

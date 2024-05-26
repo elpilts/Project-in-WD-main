@@ -1,77 +1,4 @@
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-}
 
-header {
-    background-color: #ffff;
-    color: #360f2a;
-    padding: 15px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    border-bottom: 1px solid rgba(54,15,42,0.5);
-    z-index: 2;
-}
-
-header h1 {
-    margin: 0;
-    margin-left: 30px;
-    font-size: 30px;
-    font-weight: bold;
-   
-}
-
-header nav ul {
-    list-style: none;
-    display: flex;
-    flex-direction: row;
-}
-
-header nav ul li {
-    margin-left: 20px;
-    padding-top: 20px;
-}
-
-header nav ul li:first-of-type {
-    margin-left: 280px; 
-}
-
-header nav ul li a {
-    text-decoration: none;
-    color: #360f2a;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-#my-account-link {
-    text-decoration: underline;
-}
-
-.btn-header {
-    position: relative;
-    background-color: rgba(54,15,42);
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
-    padding: 10px 20px;
-    cursor: pointer;
-    right: 0;
-    border:  1px solid rgba(54,15,42);
-    border-radius: 12px;
-    margin-left: 30px;
-}
-
-.btn-header:hover {
-    background-color: white;
-    color: rgba(54,15,42);
-    border:  1px solid rgba(54,15,42);
-
-}
 
 .login{
     display: flex;
@@ -82,19 +9,19 @@ header nav ul li a {
     min-height: 100vh;
 }
 
-.email, .password{
+.login-email, .login-password{
     padding-bottom: 15px;
     text-align: center;
     border: none;
 }
 
-.email input{
+.login-email input{
     font-size: 18px;
     padding-left: 10px;
     border-radius: 8px;
 }
 
-.password input{
+.login-password input{
     font-size: 18px;
     padding-left: 10px;
     border-radius: 8px;
@@ -111,7 +38,7 @@ header nav ul li a {
 }
 
 
-.btn{
+.loginbtn{
     margin-top: 10px;
     background-color: rgba(54,15,42);
     color: white ;
@@ -123,7 +50,7 @@ header nav ul li a {
     cursor: pointer;
 }
 
-.btn:hover {
+.loginbtn:hover {
     background-color: rgb(56, 32, 49);
     color: White;
 

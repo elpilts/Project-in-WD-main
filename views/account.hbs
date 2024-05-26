@@ -1,3 +1,16 @@
 <div class="account">
-    This is the name: {{this.parkingName}}
-</div>
+        <h1 class="text-center mt-3 mb-3">My Account</h1>
+        <div class="card">
+            <div class="card-header">Account Details</div>
+            <div class="card-body">
+                <p><strong>Name:</strong> {{user.name}}</p>
+                <p><strong>Age:</strong> {{user.age}}</p>
+                <p><strong>Email:</strong> {{user.email}}</p>
+                <p><strong>Phone:</strong> {{user.phone}}</p>
+                <p><strong>Field of Studies:</strong> {{user.fieldOfStudies}}</p>
+            </div>
+        </div>
+        <!-- Hidden paragraph to store the email -->
+        <p id="userEmail" style="display:none;">{{user.email}}</p>
+        <button id="deleteAccountBtn" class="deleteAccountBtn">Delete Account</button>
+    </div>

@@ -1,15 +1,16 @@
-
-    <login>
-        <div class="login">
-            <h1> Log In your Account</h1>
-            <div class="email">
-                <input type="text" id="email" name="email" placeholder="email">
+<login>
+    <div class="login">
+        <h1>Log In your Account</h1>
+        <form id="login-form" method="POST" action="/login">
+            <div class="login-email">
+                <input type="text" id="login-email" name="login-email" placeholder="Email" required>
             </div>
-            <div class="password">
-                <input type="text" id="password" name="password" placeholder="password">
+            <div class="login-password">
+                <input type="password" id="login-password" name="login-password" placeholder="Password" required>
             </div>
-            <h2> Forgot Password?</h2>
-            <h2>Don't have an account? Sign Up!</h2>
-            <button class="btn">Log In</button>
-        </div>
-    </login>
+            <button type="submit" class="loginbtn">Log In</button>
+        </form>
+        <h2>Forgot Password?</h2>
+        <h2>Don't have an account? <a href="/signup">Sign Up!</a></h2>
+    </div>
+</login>

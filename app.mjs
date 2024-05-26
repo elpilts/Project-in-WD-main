@@ -16,6 +16,7 @@ app.set('view engine', 'hbs');
 app.set('views', './views');
 
 app.use('/',router);
+<<<<<<< HEAD
 
 app.get('/form/submit', function(request, response, next){
 
@@ -98,6 +99,8 @@ app.post('/form/submit', function(request, response, next){
             response.status(500).send('An error occurred while inserting data.');
         });
 });
+=======
+>>>>>>> origin/elpi
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
