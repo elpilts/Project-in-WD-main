@@ -710,3 +710,53 @@ div:last-of-type{
   margin-top: 150px; 
   margin-left: 130px;
 }
+
+/* Delete */
+.deleteEvent{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+}
+
+.deleteEvent div{
+  padding-bottom: 15px;
+  text-align: center;
+  border: none;
+}
+
+.deleteEvent input{
+  font-size: 18px;
+  padding-left: 10px;
+  border-radius: 8px;
+}
+
+.deleteEvent h1{
+  font-size: 35px;
+  padding-bottom: 20px;
+}
+
+.deleteEvent label{
+  display: block;
+  font-size: 25px;
+}
+
+.deleteEvent-btn{
+  margin-top: 10px;
+  background-color: rgba(54,15,42);
+  color: white ;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 7px 15px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.deleteEvent-btn:hover {
+  background-color: rgb(56, 32, 49);
+  color: White;
+}
