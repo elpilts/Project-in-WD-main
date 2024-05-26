@@ -107,7 +107,7 @@ main {
 
 .after-header {
     position: relative;
-    background-image: url('files\header.png'); 
+    background-image: url('files/header.png'); 
     background-repeat: no-repeat;
     background-size: cover;
     height: 600px; 
@@ -441,8 +441,8 @@ input{
 .signbtn-enabled:hover {
   background-color: rgb(56, 32, 49);
   color: white;
-}*/
-
+}
+/*
 footer {
   margin-top: 100px;
   position: relative;
@@ -454,7 +454,7 @@ footer {
   border-top: 1px solid rgba(54,15,42,0.5);
   
 }
-
+*/
 .account {
   margin-top: 150px; 
   display: flex;
@@ -533,3 +533,32 @@ footer {
   color: White;
 
 }
+
+
+.aboutus {
+  display: flex;
+  flex-direction: column; 
+}
+
+.aboutustitle {
+  background-color: rgba(54,15,42);
+  padding: 40px;
+  margin-top: 90px;
+  text-align: center;
+  color: white;
+
+}
+
+.aboutustext{
+  padding-top: 50px;
+  padding-left: 120px;
+  padding-right: 120px;
+  text-align: justify;
+  font-size: 17px;
+}
+
+
+.aboutusimage{
+  width: 100%;
+}
+      
