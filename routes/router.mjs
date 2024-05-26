@@ -14,7 +14,7 @@ import { DeleteEvent } from '../controllers/Delete.mjs';
 // const con = await import('./connection');
 
 const openDatabaseConnection = () => {
-    const db = sqlite('db/Project_WebD_db.db', { verbose: console.log });
+    const db = sqlite('db/Project_WebD_db.db');
     return db;
 };
 
@@ -38,7 +38,6 @@ router.get('/', (req, res) => {
 router.get('/home', async (req,res) => {
     try{
         const parkingSiteNames = await homeController.showParkingSiteName();
-        console.log(parkingSiteNames);
         res.render('HomePage',{
             atHome: true,
             atAbout: false,
@@ -48,7 +47,6 @@ router.get('/home', async (req,res) => {
             atInsert: false,
             atEdit: false,
             atSign: false,
-            parkingName: parkingSiteNames
         });
     }
     catch (error) {
@@ -157,7 +155,6 @@ export default router ;
 router.get('/account', async (req,res) => {
     try{
         const parkingSiteNames = await homeController.showParkingSiteName();
-        console.log(parkingSiteNames);
         res.render('account',{
             atHome: true,
             atAbout: false,
@@ -303,7 +300,6 @@ router.post('/events/delete', function(request, response, next){
     const deleteData = {
         name: request.body.name
     };
-    console.log(deleteData);
     // Call function to insert data into the database
     DeleteEvent(deleteData)
         .then(() => {

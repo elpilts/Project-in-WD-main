@@ -2,7 +2,7 @@ import sqlite from 'better-sqlite3';
 
 // Create a function to open the database connection
 const openDatabaseConnection = () => {
-    const db = sqlite('db/Project_WebD_db.db', { verbose: console.log });
+    const db = sqlite('db/Project_WebD_db.db');
     return db;
 };
 
@@ -15,7 +15,6 @@ export const getParkingSiteName = () => {
         // Prepare and execute the query
         const query = db.prepare('SELECT Email FROM Volunteer WHERE Phone = ?');
         const info = query.all(6955441017); // Pass phone number as parameter
-        console.log(info);
         return info;
     } catch (err) {
         console.error("Error fetching parking site name:", err);
