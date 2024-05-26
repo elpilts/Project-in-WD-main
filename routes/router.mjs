@@ -168,36 +168,7 @@ router.get('/account', async (req,res) => {
 });
 
 router.get('/events/edit', function(request, response, next){
-
-	response.send(`
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <link rel="stylesheet" href="style.css">
-        <main>
-            <div class="edit">
-                <h1> Edit the Event</h1>
-                <form id="editForm" action="/events/edit" method="POST">
-                    <div class="name">
-                        <label for="name"> Name of the Event you want to change <br> </label>
-                        <input type="text" id="name" name="name" placeholder="Event Name">
-                    </div>
-                    <div class="description">
-                        <label for="description"> Description of the Event <br> </label>
-                        <input type="text" id="description" name="description" placeholder="Description">
-                    </div>
-                    <div class="picture">
-                        <label for="picture"> Picture of the Event <br> </label>
-                        <input type="text" id="picture" name="picture" placeholder="Picture Link">
-                    </div>
-                    <div class="edit-btn">
-		                <input type="submit" value="Done" />
-		            </div>
-                </form>
-            </div>
-        </main>
-	`);
-
-
+    response.sendFile("EditPage");
 });
 
 router.post('/events/edit', function(request, response, next){
@@ -220,34 +191,7 @@ router.post('/events/edit', function(request, response, next){
 });
 
 router.get('/events/insert', function(request, response, next){
-
-	response.send(`
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-    <main>
-    <div class="create">
-        <h1> Create New Event</h1>
-        <form id="createForm" action="/events/insert" method="POST">
-            <div class="c-name">
-                <label for="name"> Name of the Event <br> </label>
-                <input type="text" id="name" name="name" placeholder="Event Name" required>
-            </div>
-            <div class="c-description">
-                <label for="description"> Description of the Event <br> </label>
-                <input type="text" id="description" name="description" placeholder="Description" required>
-            </div>
-            <div class="c-picture">
-                <label for="picture"> Picture of the Event <br> </label>
-                <input type="text" id="picture" name="picture" placeholder="Picture Link" required>
-            </div>
-            <div class="create-btn">
-                <input type="submit" value="Create" />
-            </div>
-        </form>
-    </div>
-</main>
-	`);
+    response.sendFile("NewEvent");
 });
 
 router.post('/events/insert', function(request, response, next){
@@ -270,28 +214,7 @@ router.post('/events/insert', function(request, response, next){
 });
 
 router.get('/events/delete', function(request, response, next){
-
-	response.send(`
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-    <main>
-    <div class="deleteEvent">
-        <h1> Delete</h1>
-        <form id="editForm" action="/events/delete" method="POST">
-            <div class="name">
-                <label for="name"> Name of the Event you want to delete: <br> </label>
-                <input type="text" id="name" name="name" placeholder="Event Name">
-            </div>
-            <div>
-                <label> Are you sure you want to delete this event? <br> </label>
-            </div>
-            <a href="/events/delete"><button class="deleteEvent-btn">Yes</button></a>
-            <a href="/events"><button class="deleteEvent-btn">No</button></a>
-        </form>
-    </div>
-</main>
-	`);
+    response.sendFile("Delete");
 });
 
 router.post('/events/delete', function(request, response, next){
