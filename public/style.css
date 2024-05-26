@@ -657,7 +657,7 @@ div:last-of-type{
 }
 
 /* Edit */
-.edit{
+.editPage{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -666,29 +666,29 @@ div:last-of-type{
   min-height: 100vh;
 }
 
-.edit div{
+.editPage div{
   padding-bottom: 15px;
   text-align: center;
   border: none;
 }
 
-.edit input{
+.editPage input{
   font-size: 18px;
   padding-left: 10px;
   border-radius: 8px;
 }
 
-.edit h1{
+.editPage h1{
   font-size: 35px;
   padding-bottom: 20px;
 }
 
-.edit label{
+.editPage label{
   display: block;
   font-size: 25px;
 }
 
-.edit-btn{
+.editPage-btn{
   margin-top: 10px;
   background-color: rgba(54,15,42);
   color: white ;
@@ -701,7 +701,7 @@ div:last-of-type{
   text-align: center;
 }
 
-.edit-btn:hover {
+.editPage-btn:hover {
   background-color: rgb(56, 32, 49);
   color: White;
 }
