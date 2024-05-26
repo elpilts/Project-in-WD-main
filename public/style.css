@@ -460,5 +460,79 @@ footer {
 
 .account {
   margin-top: 150px; 
-  margin-left: 130px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card {
+  margin-bottom: 20px;
+}
+
+.deleteAccountBtn {
+  background-color: rgba(54, 15, 42);
+  color: white;
+  font-size: 16px;
+  padding: 7px 15px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+
+
+.login{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+}
+
+.login-email, .login-password{
+  padding-bottom: 15px;
+  text-align: center;
+  border: none;
+}
+
+.login-email input{
+  font-size: 18px;
+  padding-left: 10px;
+  border-radius: 8px;
+}
+
+.login-password input{
+  font-size: 18px;
+  padding-left: 10px;
+  border-radius: 8px;
+}
+
+.login h1{
+  font-size: 35px;
+  padding-bottom: 20px;
+}
+
+.login h2{
+  font-size: 15px;
+  text-align: center;
+}
+
+
+.loginbtn{
+  margin-top: 10px;
+  background-color: rgba(54,15,42);
+  color: white ;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 7px 15px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.loginbtn:hover {
+  background-color: rgb(56, 32, 49);
+  color: White;
+
 }

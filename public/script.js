@@ -102,3 +102,37 @@ document.addEventListener('DOMContentLoaded', function() {
       });
   });
 });
+
+//delete account
+
+document.addEventListener("DOMContentLoaded", function () {
+  const deleteAccountBtn = document.getElementById('deleteAccountBtn');
+  const userEmail = document.getElementById('userEmail').innerText;
+
+  deleteAccountBtn.addEventListener('click', function () {
+      if (confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
+          // Make a DELETE request to the server to delete the account
+          fetch('/delete-account', {
+              method: 'DELETE',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({ email: userEmail })
+          })
+          .then(response => response.json())
+          .then(data => {
+              if (data.success) {
+                  alert('Your account has been successfully deleted.');
+                  // Optionally, redirect to another page or update the UI
+                  window.location.href = '/home';
+              } else {
+                  alert('There was an error deleting your account. Please try again.');
+              }
+          })
+          .catch(error => {
+              console.error('Error:', error);
+              alert('There was an error deleting your account. Please try again.');
+          });
+      }
+  });
+});

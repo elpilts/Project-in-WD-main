@@ -29,7 +29,7 @@ export const insertFormData = (formData) => {
 
     try {
         const query = db.prepare('INSERT INTO Volunteer (Name, Email, Phone, Age, Password, Studies) VALUES (?, ?, ?, ?, ?, ?)');
-        query.run(formData.name, formData.surname, formData.email, formData.phone, formData.password, formData.fieldOfStudies);
+        query.run(formData.name, formData.email, formData.phone, formData.age, formData.password, formData.fieldOfStudies);
         return Promise.resolve(formData); // Resolve with the inserted data
     } catch (error) {
         console.error('Error inserting form data:', error);
@@ -39,20 +39,18 @@ export const insertFormData = (formData) => {
     }
 };
 
-//function to read account data
-export function getUserDataByEmail(email) {
-    return new Promise((resolve, reject) => {
-        const db = openDatabaseConnection();
-        const query = db.prepare('SELECT * FROM Volunteer WHERE email = ?');
-        try {
-            const info = query.all(email); 
-            console.log(info);
-            resolve(info);
-        } catch (err) {
-            console.error("Error fetching user data:", err);
-            reject(err);
-        } finally {
-            db.close();
-        }
-    });
-}
+export const deleteUserDataByEmail = (email) => {
+    const db = openDatabaseConnection();
+    const query = db.prepare('DELETE FROM Volunteer WHERE Email = ?');
+    try {
+        query.run(email);
+        console.log("deleted from database");
+        return true;
+    } catch (error) {
+        console.error('Error deleting user data:', error);
+        throw error;
+    } finally {
+        db.close();
+    }
+};
+
