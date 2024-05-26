@@ -8,9 +8,6 @@ const insertController = await import(`../controllers/Insert.mjs`)
 const deleteController = await import(`../controllers/Delete.mjs`)
 const editController = await import(`../controllers/Edit.mjs`)
 const signupController = await import('../controllers/Signup.mjs')
-import { InsertEvent } from '../controllers/Insert.mjs';
-import { EditEvent } from '../controllers/Edit.mjs';
-import { DeleteEvent } from '../controllers/Delete.mjs';
 // const con = await import('./connection');
 
 const openDatabaseConnection = () => {
@@ -211,7 +208,7 @@ router.post('/events/edit', function(request, response, next){
     };
 
     // Call function to insert data into the database
-    EditEvent(editData)
+    editController.EditEvent(editData)
         .then(() => {
             response.redirect('/events')
         })
@@ -260,7 +257,7 @@ router.post('/events/insert', function(request, response, next){
     };
 
     // Call function to insert data into the database
-    InsertEvent(eventData)
+    insertController.InsertEvent(eventData)
         .then(() => {
             response.redirect('/events')
         })
@@ -301,7 +298,7 @@ router.post('/events/delete', function(request, response, next){
         name: request.body.name
     };
     // Call function to insert data into the database
-    DeleteEvent(deleteData)
+    deleteController.DeleteEvent(deleteData)
         .then(() => {
             response.redirect('/events')
         })
