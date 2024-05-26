@@ -1,7 +1,8 @@
 import express from 'express';
 import session from 'express-session';
-<<<<<<< HEAD
 import sqlite from 'better-sqlite3';
+import bcrypt from 'bcrypt';
+import { insertFormData, deleteUserDataByEmail, getUserByEmail } from '../model/sqlite.mjs';
 
 const homeController = await import(`../controllers/Home.mjs`)
 const eventController = await import(`../controllers/Events.mjs`)
@@ -16,15 +17,6 @@ const openDatabaseConnection = () => {
 };
 
 const router = express.Router()
-=======
-import bcrypt from 'bcrypt';
-import { insertFormData, deleteUserDataByEmail, getUserByEmail } from '../model/sqlite.mjs';
-
-const homeController = await import(`../controllers/Home.mjs`);
-const signupController = await import('../controllers/Signup.mjs');
-
-const router = express.Router();
->>>>>>> origin/elpi
 
 // Use the express-session middleware
 router.use(session({
@@ -45,12 +37,8 @@ router.get('/', (req, res) => {
 router.get('/home', async (req, res) => {
     try {
         const parkingSiteNames = await homeController.showParkingSiteName();
-<<<<<<< HEAD
-        res.render('HomePage',{
-=======
         console.log(parkingSiteNames);
         res.render('HomePage', {
->>>>>>> origin/elpi
             atHome: true,
             atAbout: false,
             atEvent: false,
@@ -132,12 +120,6 @@ router.get('/events/delete', async (req, res) => {
 
 router.get('/about', async (req,res) => {
     try{
-        //const parkingSiteNames = await homeController.showParkingSiteName(); αν χρειαστει κατι απο την database
-        res.render('AboutUsPage',{
-            atHome:false,
-            atAbout:true
-router.get('/about', async (req, res) => {
-    try {
         res.render('AboutUsPage', {
             atHome: false,
             atAbout: true,
@@ -157,7 +139,14 @@ router.get('/signup', async (req,res) => {
             atAbout: false,
             atEvent: false,
             atContact: false,
-            atSign: true,
+            atSign: true
+        });
+    }catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    };
+});
+
 router.get('/events', async (req, res) => {
     try {
         res.render('ekdhloseis', {
@@ -260,6 +249,11 @@ router.get('/account', async (req,res) => {
             atSign: false,
             parkingName: parkingSiteNames
         });
+    }catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    };
+});
 
 router.post('/login', async (req, res) => {
     const { 'login-email': email, 'login-password': password } = req.body;

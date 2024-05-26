@@ -122,6 +122,9 @@ export const Insert = (eventData) => {
         return Promise.reject(error);
     } finally {
         // Close the database connection
+    }
+};
+
 export const getUserByEmail = (email) => {
     const db = openDatabaseConnection();
     

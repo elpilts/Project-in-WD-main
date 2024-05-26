@@ -741,6 +741,10 @@ div:last-of-type{
 }
 
 .deleteEvent div{
+  font-size: 35px;
+  padding-bottom: 20px;
+}
+
 .login-email, .login-password{
   padding-bottom: 15px;
   text-align: center;
@@ -748,6 +752,11 @@ div:last-of-type{
 }
 
 .deleteEvent input{
+  font-size: 18px;
+  padding-left: 10px;
+  border-radius: 8px;
+}
+
 .login-email input{
   font-size: 18px;
   padding-left: 10px;
@@ -755,6 +764,10 @@ div:last-of-type{
 }
 
 .deleteEvent h1{
+  font-size: 35px;
+  padding-bottom: 20px;
+}
+
 .login-password input{
   font-size: 18px;
   padding-left: 10px;
@@ -772,11 +785,22 @@ div:last-of-type{
 }
 
 .deleteEvent-btn{
+  margin-top: 10px;
+  background-color: rgba(54,15,42);
+  color: white ;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 7px 15px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  text-align: center;
+}
+
 .login h2{
   font-size: 15px;
   text-align: center;
 }
-
 
 .loginbtn{
   margin-top: 10px;
@@ -799,5 +823,4 @@ div:last-of-type{
 .loginbtn:hover {
   background-color: rgb(56, 32, 49);
   color: White;
-
 }
