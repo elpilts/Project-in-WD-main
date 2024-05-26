@@ -274,16 +274,56 @@ router.post('/events/insert', function(request, response, next){
         });
 });
 
+router.get('/events/delete', function(request, response, next){
 
+	response.send(`
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="../style.css">
+    <main>
+    <div class="deleteEvent">
+        <h1> Delete</h1>
+        <form id="editForm" action="/events/delete" method="POST">
+            <div class="name">
+                <label for="name"> Name of the Event you want to delete: <br> </label>
+                <input type="text" id="name" name="name" placeholder="Event Name">
+            </div>
+            <div>
+                <label> Are you sure you want to delete this event? <br> </label>
+            </div>
+            <a href="/events/delete"><button class="deleteEvent-btn">Yes</button></a>
+            <a href="/events"><button class="deleteEvent-btn">No</button></a>
+        </form>
+    </div>
+</main>
+	`);
+});
 
-router.post('/events/delete', function(req, res, next){
-    const name = {name: req.body.name};
-    DeleteEvent(name)
+router.post('/events/delete', function(request, response, next){
+    // Parse form data
+    const deleteData = {
+        name: request.body.name
+    };
+    console.log(deleteData);
+    // Call function to insert data into the database
+    DeleteEvent(deleteData)
         .then(() => {
-            res.redirect('/events')
+            response.redirect('/events')
         })
         .catch(error => {
             console.error('Error inserting data:', error);
-            res.status(500).send('An error occurred while inserting data.');
+            response.status(500).send('An error occurred while inserting data.');
         });
 });
+
+// router.post('/events/delete', function(req, res, next){
+//     const name = {name: req.body.name};
+//     DeleteEvent(name)
+//         .then(() => {
+//             res.redirect('/events')
+//         })
+//         .catch(error => {
+//             console.error('Error inserting data:', error);
+//             res.status(500).send('An error occurred while inserting data.');
+//         });
+// });

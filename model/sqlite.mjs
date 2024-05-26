@@ -48,8 +48,8 @@ export let Delete = (deletename) => {
     const query = db.prepare('DELETE FROM Event WHERE Name = ?'); //οριζει query
     let info;
     try { //trexei query & το επιστρέφει
-        info = query.run(deletename);
-        return info;
+        info = query.run(deletename.name);
+        return true;
     }
     catch (err) {
         throw err;
