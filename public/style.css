@@ -107,7 +107,7 @@ main {
 
 .after-header {
     position: relative;
-    background-image: url('files\header.png'); 
+    background-image: url('files/header.png'); 
     background-repeat: no-repeat;
     background-size: cover;
     height: 600px; 
@@ -823,4 +823,31 @@ div:last-of-type{
 .loginbtn:hover {
   background-color: rgb(56, 32, 49);
   color: White;
+}
+
+.aboutus {
+  display: flex;
+  flex-direction: column; 
+}
+
+.aboutustitle {
+  background-color: rgba(54,15,42);
+  padding: 40px;
+  margin-top: 90px;
+  text-align: center;
+  color: white;
+
+}
+
+.aboutustext{
+  padding-top: 50px;
+  padding-left: 120px;
+  padding-right: 120px;
+  text-align: justify;
+  font-size: 17px;
+}
+
+
+.aboutusimage{
+  width: 100%;
 }

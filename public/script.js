@@ -17,6 +17,7 @@ valueDisplays.forEach((valueDisplay) => {
   }, duration);
 });
 
+
 // .about section
 var aboutImage = document.querySelector(".about-image");
 var aboutCurrentPos = 0;
